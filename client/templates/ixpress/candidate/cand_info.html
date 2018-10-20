@@ -1,0 +1,248 @@
+<template name="CandInfo">
+  {{> commentsread keyField="generalInfo" approvalData=approvalData}}
+
+        <div class="content animate-panel">
+
+            <div class="hpanel">
+
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                        Candidate Information
+                    </h2>
+                    <small>Please, enter all fields</small>
+                    <fieldset class="form1">
+                    <form id="candidateInfo">
+
+                        <div class="row">
+                            <div class="message-contactform col-md-12"></div>
+                            <div class="col-sm-2 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Title*">Title*</span> </label>
+                                <select class="input_field" name="title">
+                                    <option value="mr" {{optionIsSelected candidateData.title "mr"}}>Mr.</option>
+                                    <option value="ms" {{optionIsSelected candidateData.title "ms"}}>Ms.</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="First Name*">First Name*</span> </label>
+                                <input type="text" class="input_field" name="firstName" value="{{candidateData.firstName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                            <div class="col-sm-2 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Middle Name">Middle Name</span> </label>
+                                <input type="text" class="input_field" name="middleName" value="{{candidateData.middleName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$">
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Last Name *">Last Name*</span> </label>
+                                <input type="text" class="input_field" name="lastName" value="{{candidateData.lastName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="message-contactform col-md-12"></div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="contact-name"> <span class="" data-parsley-pattern="^[a-zA-Z]+$" data-content="Maiden Name">Maiden Name</span> </label>
+                                <input type="text" class="input_field" name="maidenName" value="{{candidateData.maidenName}}" id="contact-name">
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Other Name(s)">Other Name(s)</span> </label>
+                                <input type="text" class="input_field" name="otherName" value="{{candidateData.otherName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="message-contactform col-md-12"></div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Marital Status*">Marital Status*</span> </label>
+                                <select class="input_field" name="maritalStatus">
+                                    <option value="single" {{optionIsSelected candidateData.maritalStatus "single"}}>Single</option>
+                                    <option value="married" {{optionIsSelected candidateData.maritalStatus "married"}}>Married</option>
+                                    <option value="divorced" {{optionIsSelected candidateData.maritalStatus "divorced"}}>Divorced</option>
+                                    <option value="widow" {{optionIsSelected candidateData.maritalStatus "widow"}}>Widow</option>
+                                    <option value="seperated" {{optionIsSelected candidateData.maritalStatus "seperated"}}>Seperated </option>
+                                    <option value="partner" {{optionIsSelected candidateData.maritalStatus "partner"}}>Partner</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Gender*">Gender*</span> </label>
+                                <select class="input_field" name="gender">
+                                    <option value="male" {{optionIsSelected candidateData.gender "male"}}>Male</option>
+                                    <option value="female" {{optionIsSelected candidateData.gender "female"}}>Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Date of Birth">Date of Birth*</span> </label>
+                              {{#if candidateData.dateOfBirth}}
+                              <input id="dateOfBirth" name="dateOfBirth" type="text" value="{{formatDate candidateData.dateOfBirth 'MM/DD/YYYY'}}" class="input_field datepicker validationRequired" data-date-end-date="0d">
+                              {{else}}
+                              <input id="dateOfBirth" name="dateOfBirth" type="text" placeholder="MM/DD/YYYY" class="input_field datepicker validationRequired" data-date-end-date="0d">
+                              {{/if}}
+                                <!-- <input type="text" class="input_field" name="contact_name6" id="contact-name" required=""> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input"></div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="City of Birth*">City of Birth*</span> </label>
+                                <input type="text" class="input_field" name="cityOfBirth" value="{{candidateData.cityOfBirth}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="State of Birth*">State of Birth*</span> </label>
+                                <input type="text" class="input_field" name="stateOfBirth" value="{{candidateData.stateOfBirth}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Country of Birth*">Country of Birth*</span> </label>
+                                <!-- <input type="text" class="input_field" name="countryOfBirth" value="{{candidateData.countryOfBirth}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required> -->
+                                <select class="input_field" name="countryOfBirth">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../candidateData.countryOfBirth name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input"></div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Cell Phone*">Cell Phone*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{candidateData.cellPhone}}" name="cellPhone" id="contact-name" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" Required>
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Day Phone">Day Phone</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{candidateData.dayPhone}}" name="dayPhone" id="contact-name"  data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$">
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Evening Phone">Evening Phone</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{candidateData.eveningPhone}}" name="eveningPhone" id="contact-name"  data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$">
+                            </div>
+                        </div>
+
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-email"> <span class="" data-content="Email *">Email*</span> </label>
+                        <input type="email" class="input_field" value="{{candidateData.email}}" name="email" id="contact-email" Required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-ssn"> <span class="" data-content="Social Security Number">Social Security Number</span> </label>
+                        <input type="text" class="input_field" value="{{candidateData.socialSecurityNumber}}" name="socialSecurityNumber" id="contact-ssn" data-parsley-pattern="^\d{3}-?\d{2}-?\d{4}$">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-nationality"> <span class="" data-content="Country of Nationality*">Country of Nationality*</span> </label>
+                        <!-- <input type="text" class="input_field" name="countryOfNationality" value="{{candidateData.countryOfNationality}}" id="contact-nationality" data-parsley-pattern="^[a-zA-Z]+$" Required> -->
+                        <select class="input_field" name="countryOfNationality">
+                          {{#each countries}}
+                          <option value="{{name}}" {{optionIsSelected ../candidateData.countryOfNationality name}}>{{name}}</option>
+                          {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-alien"> <span class="" data-content="Alien Number*">Alien Number</span> </label>
+                        <input type="text" class="input_field" name="alienNumber" value="{{candidateData.alienNumber}}" id="contact-alien" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-passport"> <span class="" data-content="Passport Number*">Passport Number*</span> </label>
+                        <input type="text" class="input_field" name="passportNumber" value="{{candidateData.passportNumber}}" id="contact-passport" data-parsley-pattern="^[A-PR-WYa-pr-wy][1-9]\d\s?\d{4}[1-9]$" Required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-passissue"> <span class="" data-content="Passport Issuing Country*">Passport Issuing Country*</span> </label>
+                        <!-- <input type="text" class="input_field" name="passportIssueingCountry"  value="{{candidateData.passportIssueingCountry}}" id="contact-passissue" data-parsley-pattern="^[a-zA-Z]+$" Required> -->
+                        <select class="input_field" name="passportIssueingCountry">
+                          {{#each countries}}
+                          <option value="{{name}}" {{optionIsSelected ../candidateData.passportIssueingCountry name}}>{{name}}</option>
+                          {{/each}}
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-passissuedate"> <span class="" data-content="Passport Issued Date*">Passport Issued Date*</span> </label>
+                      {{#if candidateData.passportIssuedDate}}
+                      <input id="passportIssuedDate" name="passportIssuedDate" type="text" placeholder="MM/DD/YYYY" value="{{formatDate candidateData.passportIssuedDate 'MM/DD/YYYY'}}"  class="input_field datepicker validationRequired" data-date-end-date="0d">
+                      {{else}}
+                      <input id="passportIssuedDate" name="passportIssuedDate" type="text" placeholder="MM/DD/YYYY"  class="input_field datepicker validationRequired" data-date-end-date="0d">
+
+                      {{/if}}
+                        <!-- <input type="text" class="input_field" name="passportIssuedDate" id="contact-passissuedate" required=""> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-passvaliddate"> <span class="" data-content="Passport Valid Until - Date your Passport Expire*">Passport Valid Until - Date your Passport Expire*</span> </label>
+                      {{#if candidateData.passportExpireDate}}
+                      <input id="passportExpireDate" name="passportExpireDate" type="text" value="{{formatDate candidateData.passportExpireDate 'MM/DD/YYYY'}}"  class="input_field datepicker validationRequired" data-date-start-date="0d">
+                      {{else}}
+                      <input id="passportExpireDate" name="passportExpireDate" type="text" placeholder="MM/DD/YYYY" class="input_field datepicker validationRequired" data-date-start-date="0d">
+                      {{/if}}
+                        <!-- <input type="text" class="input_field" name="passportExpireDate" id="contact-passvaliddate" required=""> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-enterusdate"> <span class="" data-content="Arrival Date - Last Entry Date into US*">Arrival Date - Last Entry Date into US</span> </label>
+                      {{#if candidateData.arrivalDateLastEntryDateInUS}}
+                      <input id="arrivalDateLastEntryDateInUS" name="arrivalDateLastEntryDateInUS" value="{{formatDate candidateData.arrivalDateLastEntryDateInUS 'MM/DD/YYYY'}}" type="text"  class="input_field datepicker validationRequired" data-date-end-date="0d">
+                      {{else}}
+                      <input id="arrivalDateLastEntryDateInUS" name="arrivalDateLastEntryDateInUS" placeholder="MM/DD/YYYY" type="text"  class="input_field datepicker validationRequired" data-date-end-date="0d" >
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-poec"> <span class="" data-content="Arrival City - Port of Entry*">Arrival City - Port of Entry</span> </label>
+                        <input type="text" class="input_field" name="arrivalCityPortOfEntry" value="{{candidateData.arrivalCityPortOfEntry}}" id="contact-poec" data-parsley-pattern="^[a-zA-Z]+$" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-poes"> <span class="" data-content="Arrival State - Port of Entry*">Arrival State - Port of Entry</span> </label>
+                        <input type="text" class="input_field" name="arrivalStatePortOfEntry" value="{{candidateData.arrivalStatePortOfEntry}}" id="contact-poes" data-parsley-pattern="^[a-zA-Z]+$" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-degree"> <span class="" data-content="Degree - Highest Education*">Highest Education - Degree (HS, BS, B.Tech, MS, PhD)*</span> </label>
+                        <input type="text" class="input_field" name="higestEducation" value="{{candidateData.higestEducation}}" id="contact-degree" Required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-major"> <span class="" data-content="Degree - Major*">Degree Major - Field of Study*</span> </label>
+                        <input type="text" class="input_field" name="fieldOfStudy" value="{{candidateData.fieldOfStudy}}" id="contact-major" Required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 input">
+                      <label class="" for="contact-comments"> <span class="" data-content="Notes or Comments">Notes or Comments</span> </label>
+                        <input class="input_field" name="notes" type="text" value="{{candidateData.notes}}" id="contact-comments">
+                    </div>
+                </div>
+{{#if isCandidate}}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                    </div>
+                </div>
+{{/if}}
+{{loadFormValidationMessage}}
+                </form>
+                </fieldset>
+
+
+
+            </div>
+                </div>
+                </div>
+                {{> comments keyField="generalInfo"}}
+
+</template>

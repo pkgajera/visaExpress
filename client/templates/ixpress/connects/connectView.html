@@ -1,0 +1,79 @@
+<template name="connectView">
+<div class="content animate-panel">
+
+<div class="row social-board">
+    {{#if isTicketClose connectsData.ticketStatus}}
+    {{#if isRequestor connectsData.requestorId}}
+    <div class="col-md-2">
+        <div class="panel-body">
+                <div class="media social-profile clearfix">
+                    <div class="media-body">
+                      Ticket Status  <br/> <select class="input_field" name="connectStatus" id="connectStatus">
+                                <option value="processing" {{optionIsSelected connectsData.ticketStatus "processing"}}>Processing</option>
+                                <option value="resolved" {{optionIsSelected connectsData.ticketStatus "resolved"}}>Resolved</option>
+                                <option value="reject" {{optionIsSelected connectsData.ticketStatus "reject"}}>Reject</option>
+                                <option value="close" {{optionIsSelected connectsData.ticketStatus "close"}}>Close</option>
+                                </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+    <div class="col-md-8 col-md-offset-1">
+        <div class="hpanel hblue">
+            <div class="panel-body">
+                <div class="media social-profile clearfix">
+                    <a class="pull-left">
+                        <img src="/images/ixpress-logo.png" alt="profile-picture">
+                    </a>
+                    <div class="media-body">
+                        <h5>{{requestorName connectsData.requestorId}}</h5>
+                        <small class="text-muted">{{formatDate connectsData.createdAt 'DD.MM.YYYY'}}</small>
+                        <span class="label label-warning pull-right">{{connectsData.ticketStatus}}</span>
+                    </div>
+                </div>
+                <br/>
+                <div class="social-content m-t-md">
+                  Subject : {{connectsData.subject}} <br/>
+                  Description :  {{connectsMainReason.info}}
+                </div>
+            </div>
+            <div class="panel-footer">
+                {{#each otherUserConnects}}
+                <div class="social-talk">
+                    <div class="media social-profile clearfix">
+                        <a class="pull-left">
+                            <img src="/images/ixpress-logo.png" alt="profile-picture">
+                        </a>
+
+                        <div class="media-body">
+                            <span class="font-bold">{{requestorName this.userId}}</span>
+                            <small class="text-muted">{{formatDate this.repliedDate 'DD.MM.YYYY'}}</small>
+
+                            <div class="social-content">
+                                {{this.info}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                {{#if isTicketClose connectsData.ticketStatus}}
+              <form id ="connectComment">
+                <div class="social-form">
+                    <input class="form-control" placeholder="Your comment" name="comments" id="comments">
+                </div>
+              </form>
+              {{/if}}
+                
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+  {{loadFormValidationMessage}}
+
+
+
+</template>

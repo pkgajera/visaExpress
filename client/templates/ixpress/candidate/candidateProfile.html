@@ -1,0 +1,80 @@
+<template name="candidateProfile">
+  {{> commentsread keyField="candidateProfile" approvalData=approvalData}}
+
+    <div class="content animate-panel">
+
+            <div class="hpanel">
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                       Candidate Profile Page
+                    </h2>
+                    <small>Please, enter all fields</small>
+                    <br/>
+                    <br/>
+                    <fieldset class="form2">
+                    <form id="candidateProfile">
+
+
+           <div class="row">
+                            <div class="message-contactform col-md-12"></div>
+                            <div class="col-sm-2 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Title*">Title*</span> </label>
+                                <select class="input_field" name="title">
+                                    <option value="mr" {{optionIsSelected candidateProfileData.title "mr"}}>Mr.</option>
+                                    <option value="ms" {{optionIsSelected candidateProfileData.title "ms"}}>Ms.</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="First Name*">First Name*</span> </label>
+                                <input type="text" class="input_field" name="firstName" value="{{candidateProfileData.firstName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                            <div class="col-sm-2 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Middle Name">Middle Name</span> </label>
+                                <input type="text" class="input_field" name="middleName" value="{{candidateProfileData.middleName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$">
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Last Name *">Last Name*</span> </label>
+                                <input type="text" class="input_field" name="lastName" value="{{candidateProfileData.lastName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                              <label class="" for="empr-name"> <span class="" data-content="Benificiary Name*">Benificiary Name*</span> </label>
+                                <input type="text" class="input_field" name="benificiaryName"  value="{{candidateProfileData.benificiaryName}}" id="empr-name" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="empr-name"> <span class="" data-content="Primary_Field_of_Study*">Primary Field of Study*</span> </label>
+                                <input type="text" class="input_field" name="Primary_Field_of_Study"  value="{{candidateProfileData.Primary_Field_of_Study}}" id="empr-name" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                              <label class="" for="empr-name"> <span class="" data-content="levelOfEducation*">Highest Level of Education*</span> </label>
+                              <select class="input_field" name="levelOfEducation">
+                                  <option value="bechelor" {{optionIsSelected candidateProfileData.levelOfEducation "bechelor"}}>Bechelor's degree</option>
+                                  <option value="master" {{optionIsSelected candidateProfileData.levelOfEducation "master"}}>Master's degree</option>
+                              </select>
+                            </div>
+                        </div>
+
+                        {{#if isCandidate}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                            </div>
+                        </div>
+                        {{/if}}
+{{loadFormValidationMessage}}
+</form>
+</fieldset>
+            </div>
+
+                </div>
+
+
+
+                </div>
+{{> comments keyField="candidateProfile"}}
+
+</template>

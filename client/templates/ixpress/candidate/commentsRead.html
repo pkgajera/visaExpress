@@ -1,0 +1,46 @@
+<template name="commentsread">
+<style>
+         table {
+ font-family: arial, sans-serif;
+ border-collapse: collapse;
+ width: 100%;
+}
+
+td, th {
+ border: 1px solid 	#FFFFFF;
+ text-align: left;
+ padding: 4px;
+}
+
+tr:nth-child(even) {
+ background-color: #dddddd;
+}
+     </style>
+
+  <div class="content animate-panel">
+        <div class="hpanel">
+            <div class="panel-body">
+              <table border="">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Commentor</th>
+                    <th>Comment</th>
+                  </tr>
+                </thead>
+               <tbody>
+
+                 {{#each commentsArray}}
+                 <tr>
+                   <td>{{formatDate this.commentDate 'DD MMM YYYY HH:MM'}}</td>
+                   <td>{{this.commenterName}}</td>
+                   <td>{{this.comment}}</td>
+                 </tr>
+                 {{/each}}
+
+               </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</template>

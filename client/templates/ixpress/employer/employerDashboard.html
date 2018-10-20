@@ -1,0 +1,232 @@
+<template name="employerDashboard">
+
+   <div class="normalheader transition">
+        <div class="hpanel">
+            <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                   <h2 class="font-light m-b-xs">
+                        Candidate List
+                    </h2>
+                    <small>List of all active candidates</small>
+                               </div>
+                               
+                            </div>
+                        </div>
+        </div>
+    </div>
+    
+    {{currentUser.emails.[0].address}}
+    <div>
+    {{#each candid}}
+    <b>{{emails.[0].address}}</b>
+   <b> {{profile.usertype}}</b><br>
+    {{/each}}
+   </div>
+        <div class="content animate-panel">
+
+        <div class="hpanel">
+                
+                <div class="panel-body">
+                    
+                    <table id="example1" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Date Initiated</th>
+                                <th>Visa Status</th>
+                                <th>Job Title</th>
+                                <th>Years of Exp.</th>
+                                <th>Degree</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Vishal Gupta</td>
+                                <td>11/15/2016</td>
+                                <td>N/A</td>
+                                <td>Lead Java Developer</td>
+                                <td>8 years</td>
+                                <td>M.S, Computer Science</td>
+                                <td>Hyderabad, Telengana, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Ram Patel</td>
+                                <td>11/5/2016</td>
+                                <td>N/A</td>
+                                <td>Java Developer</td>
+                                <td>6 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Vijawada, AP, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Li Chen</td>
+                                <td>1/1/2017</td>
+                                <td>N/A</td>
+                                <td>Data Scientist</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Shanghai, China</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Cedric Kelly</td>
+                                <td>10/15/2016</td>
+                                <td>N/A</td>
+                                <td>Senior Javascript Developer</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Vijawada, AP, India</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Prashant Gupta</td>
+                                <td>11/15/2016</td>
+                                <td>N/A</td>
+                                <td>Lead Java Developer</td>
+                                <td>8 years</td>
+                                <td>M.S, Computer Science</td>
+                                <td>Hyderabad, Telengana, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Ram Gopal</td>
+                                <td>11/5/2016</td>
+                                <td>N/A</td>
+                                <td>Java Developer</td>
+                                <td>6 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Vijawada, AP, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Xiao Chen</td>
+                                <td>1/1/2017</td>
+                                <td>N/A</td>
+                                <td>Data Scientist</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Beijing, China</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Bo Jackson</td>
+                                <td>10/15/2016</td>
+                                <td>N/A</td>
+                                <td>Senior Javascript Developer</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Secundrabad, Telengana, India</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Vishal Gupta</td>
+                                <td>11/15/2016</td>
+                                <td>N/A</td>
+                                <td>Lead Java Developer</td>
+                                <td>8 years</td>
+                                <td>M.S, Computer Science</td>
+                                <td>Hyderabad, Telengana, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Ramo Kaka</td>
+                                <td>11/5/2016</td>
+                                <td>N/A</td>
+                                <td>Java Developer</td>
+                                <td>6 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Vijawada, AP, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Lo Chen</td>
+                                <td>1/1/2017</td>
+                                <td>N/A</td>
+                                <td>Data Scientist</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Shanghai, China</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Smiley Kelly</td>
+                                <td>10/15/2016</td>
+                                <td>N/A</td>
+                                <td>Senior Javascript Developer</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Vijawada, AP, India</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Prabul Gupta</td>
+                                <td>11/15/2016</td>
+                                <td>N/A</td>
+                                <td>Lead Java Developer</td>
+                                <td>8 years</td>
+                                <td>M.S, Computer Science</td>
+                                <td>Hyderabad, Telengana, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Nirmal Kumar</td>
+                                <td>11/5/2016</td>
+                                <td>N/A</td>
+                                <td>Java Developer</td>
+                                <td>6 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Vijawada, AP, India</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Chen Fin</td>
+                                <td>1/1/2017</td>
+                                <td>N/A</td>
+                                <td>Data Scientist</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Shenzhen, China</td>
+                                <td>Done</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Bill Jackson</td>
+                                <td>10/15/2016</td>
+                                <td>N/A</td>
+                                <td>Senior Javascript Developer</td>
+                                <td>7 years</td>
+                                <td>B.S, Computer Science</td>
+                                <td>Secundrabad, Telengana, India</td>
+                                <td>Done</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+                    
+                </div>
+         
+
+</template>

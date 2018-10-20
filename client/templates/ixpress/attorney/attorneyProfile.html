@@ -1,0 +1,159 @@
+<template name="attorneyProfile">
+  {{> commentsread keyField="attorneyProfile" approvalData=approvalData}}
+
+    <div class="content animate-panel">
+
+            <div class="hpanel">
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                       Attorney Profile Page
+                    </h2>
+
+                    <br/>
+                    <br/>
+                    <fieldset class="form2">
+                    <form id="attorneyProfile">
+
+
+           <div class="row">
+                            <div class="message-contactform col-md-12"></div>
+                            <div class="col-sm-2 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Title*">Title*</span> </label>
+                                <select class="input_field" name="title">
+                                    <option value="mr" {{optionIsSelected attorneyProfileData.title "mr"}}>Mr.</option>
+                                    <option value="ms" {{optionIsSelected attorneyProfileData.title "ms"}}>Ms.</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="First Name*">First Name*</span> </label>
+                                <input type="text" class="input_field" name="firstName" value="{{attorneyProfileData.firstName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                            <div class="col-sm-2 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Middle Name">Middle Name</span> </label>
+                                <input type="text" class="input_field" name="middleName" value="{{attorneyProfileData.middleName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$">
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label class="" for="contact-name"> <span class="" data-content="Last Name *">Last Name*</span> </label>
+                                <input type="text" class="input_field" name="lastName" value="{{attorneyProfileData.lastName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="empr-name"> <span class="" data-content="Company name*">Company Name*</span> </label>
+                                <input type="text" class="input_field" name="companyName"  value="{{attorneyProfileData.companyName}}" id="empr-name" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="email"> <span class="" data-content="Email*">Email*</span> </label>
+                                <input type="email" class="input_field" name="email"  value="{{attorneyProfileData.email}}" id="email" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="phone"> <span class="" data-content="Phone*">Phone*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{attorneyProfileData.phone}}" name="phone" id="phone" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="street"> <span class="" data-content="Street*">Street*</span> </label>
+                                <input type="text" class="input_field" name="street" value="{{attorneyProfileData.street}}" id="street" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="unit"> <span class="" data-content="Unit*">Unit*</span> </label>
+                                <input type="text" class="input_field" name="unit" value="{{attorneyProfileData.unit}}" id="unit" data-parsley-pattern="^[ A-Za-z0-9_@./#&+-]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="city"> <span class="" data-content="City*">City*</span> </label>
+                                <input type="text" class="input_field" name="city" value="{{attorneyProfileData.city}}" id="city" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="state"> <span class="" data-content="State*">State*</span> </label>
+                                <input type="text" class="input_field" name="state" value="{{attorneyProfileData.state}}" id="state" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="zipcode"> <span class="" data-content="Zip Code*">Zip Code*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{attorneyProfileData.zipCode}}" name="zipCode" id="zipCode" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="country"> <span class="" data-content="Country*">Country*</span> </label>
+                                <!-- <input type="text" class="input_field" name="country" value="{{attorneyProfileData.country}}" id="country" Required> -->
+                                <select class="input_field" name="country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../attorneyProfileData.country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                     <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="rateofPayPerYear"> <span class="" data-content="Rate of Pay per year*">Rate of Pay per Year*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{attorneyProfileData.rateofPayPerYear}}" name="rateofPayPerYear" id="rateofPayPerYear" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="job-description"> <span class="" data-content="Number*">Number*</span> </label>
+                                <input type="text" class="input_field validationNumber" name="number" value="{{attorneyProfileData.number}}" id="job-description"  Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="job-description"> <span class="" data-content="Fax_Number*">Fax Number*</span> </label>
+                                <input type="text" class="input_field" name="Fax_Number" value="{{attorneyProfileData.Fax_Number}}" id="job-description" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"  Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="job-description"> <span class="" data-content="Province*">Province*</span> </label>
+                                <input type="text" class="input_field" name="province" value="{{attorneyProfileData.province}}" id="job-description" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="job-description"> <span class="" data-content="DayTime_Number*">DayTime Number*</span> </label>
+                                <input type="text" class="input_field" name="DayTime_Number" value="{{attorneyProfileData.DayTime_Number}}" id="job-description" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"  Required>
+                            </div>
+                        </div>
+
+
+
+
+                        {{#if isAttorney}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                            </div>
+                        </div>
+                        {{/if}}
+{{loadFormValidationMessage}}
+</form>
+</fieldset>
+            </div>
+
+                </div>
+
+
+
+                </div>
+{{> comments keyField="attornerProfile"}}
+
+</template>

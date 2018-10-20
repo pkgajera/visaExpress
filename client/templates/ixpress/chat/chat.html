@@ -1,0 +1,104 @@
+<template name="chatPanel">
+  
+<div class="content animate-panel">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="hpanel ">
+                <div class="panel-heading hbuilt">
+                    
+                    Chat room
+                </div>
+                <div class="panel-body no-padding">
+
+
+                    <div class="row">
+
+                        <div class="col-md-9 ">
+                            <div class="chat-discussion">
+                                {{#if chatHistory.length}}
+                                {{#each chatHistory}}
+                                <div class="chat-message {{ischatUser this.userId}}">
+                                    <img class="message-avatar" src="/images/ixpress-logo.png" alt="" >
+                                    <div class="message">
+                                        <a class="message-author" href="#"> {{userName this.userId}} </a>
+                                        <span class="message-date">  {{formatDate this.repliedDate 'ddd MMM DD YYYY - HH:mm:ss'}}</span>
+                                            <span class="message-content">
+											{{this.message}}
+                                            </span>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{else}}
+                                <div class="message">
+                                            <span class="message-content text-center">
+											Start a conversation just click on user from Userlist
+                                            </span>
+                                    </div>
+                                {{/if}}
+                                <!--<div class="chat-message right">
+                                    <img class="message-avatar" src="/images/ixpress-logo.png" alt="" >
+                                    <div class="message">
+                                        <a class="message-author" href="#"> Michael Smith </a>
+                                        <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                                            </span>
+                                    </div>
+                                </div>-->
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="chat-users">
+
+                                <div class="users-list">
+                                    {{#each userList}}
+                                    <div class="chat-user chatUser" data-userid="{{this._id}}">
+                                        {{#if this.status.online}}
+                                        <span class="pull-right label label-success">Online</span>
+                                        {{/if}}
+
+                                        {{#if this.messageCount}}
+                                        <span class="pull-right label label-warning">{{this.messageCount}}</span>
+                                        {{/if}}
+
+                                        <img class="chat-avatar" src="/images/ixpress-logo.png" alt="" >
+                                        <div class="chat-user-name">
+                                            <a href="#">{{this.name}}</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-footer chatBot">
+                    <form id="chatForm"> 
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="messageInput" chatId="{{chatId}}" placeholder="Type your message here...">
+                        <span class="input-group-btn">
+                            <!--<button class="btn-success custombtnChatSend sendMessage" type="submit">
+                                Send</button>-->
+                                 <input class="btn-success custombtnChatSend sendMessage" type="submit" value="Send" name="contact-submit">
+                                
+                        </span>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</template>

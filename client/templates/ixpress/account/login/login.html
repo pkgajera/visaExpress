@@ -1,0 +1,34 @@
+<template name="login">
+    <div class="login-container">
+      <div class="row">
+          <div class="col-md-12">
+
+              <div class="hpanel">
+              <div class="text-center">
+                <img src="/images/ixpress-logo.png" alt="ixpress">
+              </div>
+                  <div class="panel-body">
+                          <form  class="form-signin" id="email">
+                             {{> flashMessages}}
+                              <div class="form-group">
+                                  <label class="control-label" for="email">Email Address</label>
+                                  <input type="email" id="mail" name="email" class="form-control" placeholder="example@gmail.com" title="Please enter you username" required autofocus>
+                              </div>
+                              <div class="form-group">
+                                  <label class="control-label" for="password">Password</label>
+                                  <input type="password" id="password" name="password" class="form-control"    placeholder="******" title="Please enter your password" required>
+                              </div>
+
+                                <a class="" href="{{pathFor 'forgotPassword'}}">Forgot Password?</a>
+
+                              <button id="reg" class="btn btn-primary btn-block" type="submit">Sign In</button>
+                              <div class="center"><a id="reg"  href="{{pathFor 'register'}}">Register</a></div>
+                            
+                          </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</template>

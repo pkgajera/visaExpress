@@ -1,0 +1,86 @@
+#row {
+
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+
+}
+
+#flashMsg {
+    position: fixed;
+    z-index: 99;
+    width: 20%;
+    right: 0;
+    word-break: break-all;
+		top: 60px;
+}
+
+.datepicker-days tr:nth-child(even) {
+    background-color: white !important;
+}
+
+/*html, body {
+    position: relative;
+    min-height: 100%;
+    height: auto;
+}*/
+.-autocomplete-container{top:55px !important; opacity: 999999999999999999; opacity: 2}
+.-autocomplete-container ul li{color:black !important;height:40px !important;}
+.-autocomplete-container{position:absolute;background:white;border:1px solid #DDD;border-radius:3px;box-shadow:0 0 5px rgba(0, 0, 0, 0.1);min-width:180px;z-index:1000}
+.-autocomplete-list{list-style:none;margin:0;padding:0}.-autocomplete-item{display:block;padding:5px 10px;border-bottom:1px solid #DDD}
+.-autocomplete-item.selected{color:white !important;background:#4183C4;text-decoration:none}
+
+
+.parsley-type, .parsley-required, .parsley-pattern{
+  color: red;
+}
+
+.parsley-pattern{
+  color:red;
+}
+
+/*.proposedJobDetail:hover{
+          background-color: none; 
+         border-color:none;
+         color: #fff;
+         padding-left:0 !important;
+         padding-right:0 !important;
+}
+.proposedJobDetail{
+    padding: 0 !important;
+    border-radius: 50px;
+    color: #fff;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}*/
+
+.custombtnChatSend{
+     z-index: 2 !important;
+    margin-left: -1px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+        position: relative !important;
+        border-radius: 3px !important;
+        display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.selected-userbg{
+  background-color: #d7f5c9
+}

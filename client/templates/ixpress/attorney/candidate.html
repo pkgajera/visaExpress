@@ -1,0 +1,38 @@
+<template name="candidateList">
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.1s;">
+                <div class="hpanel">
+                    <div class="panel-heading">
+                        <div class="panel-tools"></div>
+                        Candidate List
+                    </div>
+                    <div class="panel-body">
+                      {{#if currentUserRole 'attorney'}}
+                      <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-control select2" id="emplyeeList">
+                                <option value="-1">select an employer</option>
+                                {{#each employerList}}
+                                    <option value="{{this._id}}" {{optionIsSelected employerIdhelper this._id}}>{{this.profile.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                          <div class="col-md-8">
+                          </div>
+                        </div>
+                        <br/>
+
+                        {{/if}}
+                        {{> candidateViewTable}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="candidateViewTable">
+    {{> tabular table=TabularTables.candidateList selector=selector class="table table-striped table-bordered table-hover dataTable no-footer"}}
+</template>

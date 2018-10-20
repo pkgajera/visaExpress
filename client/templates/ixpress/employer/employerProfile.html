@@ -1,0 +1,398 @@
+<template name="employerProfile">
+    {{> commentsread keyField="employerProfile" approvalData=approvalData}}
+
+    <div class="content animate-panel">
+
+        <div class="hpanel">
+            <div class="panel-body">
+                <h2 class="font-light m-b-xs">
+                    Employer Profile Page
+                </h2>
+                <small>Please, enter all fields</small>
+                <br/>
+                <br/>
+                <fieldset class="form2">
+                    <form id="employerProfile">
+
+
+                        <div class="row">
+                            <div class="message-contactform col-md-12"></div>
+                            <div class="col-sm-2 input">
+                                <label class="" for="contact-name"> <span class="" data-content="Title*">Title*</span> </label>
+                                <select class="input_field" name="title">
+                                    <option value="mr" {{optionIsSelected employerProfileData.title "mr"}}>Mr.</option>
+                                    <option value="ms" {{optionIsSelected employerProfileData.title "ms"}}>Ms.</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label class="" for="contact-name"> <span class="" data-content="First Name*">First Name*</span> </label>
+                                <input type="text" class="input_field" name="firstName" value="{{employerProfileData.firstName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$"
+                                    Required>
+                            </div>
+                            <div class="col-sm-2 input">
+                                <label class="" for="contact-name"> <span class="" data-content="Middle Name">Middle Name</span> </label>
+                                <input type="text" class="input_field" name="middleName" value="{{employerProfileData.middleName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$">
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label class="" for="contact-name"> <span class="" data-content="Last Name *">Last Name*</span> </label>
+                                <input type="text" class="input_field" name="lastName" value="{{employerProfileData.lastName}}" id="contact-name" data-parsley-pattern="^[a-zA-Z]+$"
+                                    Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="empr-name"> <span class="" data-content="US employer name*">US employer name*</span> </label>
+                                <input type="text" class="input_field" name="companyName" value="{{employerProfileData.companyName}}" id="empr-name" data-parsley-pattern="[a-zA-Z ]*$"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-title"> <span class="" data-content="Name of company representative that will sign petition*">Name of company representative that will sign petition*</span> </label>
+                                <input type="text" class="input_field" name="petitioner" value="{{employerProfileData.petitioner}}" id="job-title" data-parsley-pattern="[a-zA-Z ]*$"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="comany-title"> <span class="" data-content="Title of company representative*">Title of company representative*</span> </label>
+                                <input type="text" class="input_field" name="titleOfCompanyRepresentative" value="{{employerProfileData.titleOfCompanyRepresentative}}"
+                                    id="comany-title" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="email"> <span class="" data-content="Email*">E-mail*</span> </label>
+                                <input type="email" class="input_field" name="email" value="{{employerProfileData.email}}" id="email" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="phone"> <span class="" data-content="Phone number*">Phone number*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{employerProfileData.phone}}" name="phone" id="phone" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="hpanel">
+                                    <div class="panel-heading hbuilt">
+
+                                        Physical address of employer
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="street"> <span class="" data-content="Street*">Street*</span> </label>
+                                            <input type="text" class="input_field" name="street" value="{{employerProfileData.street}}" id="street" data-parsley-pattern="[a-zA-Z ]*$"
+                                                Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="city"> <span class="" data-content="City*">City*</span> </label>
+                                            <input type="text" class="input_field" name="city" value="{{employerProfileData.city}}" id="city" data-parsley-pattern="[a-zA-Z ]*$"
+                                                Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="state"> <span class="" data-content="State*">State*</span> </label>
+                                            <input type="text" class="input_field" name="state" value="{{employerProfileData.state}}" id="state" data-parsley-pattern="[a-zA-Z ]*$"
+                                                Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="zipcode"> <span class="" data-content="Zip Code*">Zip Code*</span> </label>
+                                            <input type="text" class="input_field validationNumber" value="{{employerProfileData.zipCode}}" name="zipCode" id="zipCode"
+                                                data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="County"> <span class="" data-content="County*">County*</span> </label>
+                                            <input type="text" class="input_field" value="{{employerProfileData.county}}" name="county" id="county" data-parsley-pattern="[a-zA-Z ]*$"
+                                                Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="country"> <span class="" data-content="Country*">Country*</span> </label>
+                                            <!-- <input type="text" class="input_field" name="country" value="{{attorneyProfileData.country}}" id="country" Required> -->
+                                            <select class="input_field" name="country" id="country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../employerProfileData.country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="hpanel">
+                                    <div class="panel-heading hbuilt">
+
+                                        <input type="checkbox" id="isSameAddress" name="isSameAddress" {{radioIsSelected employerProfileData.isSameAddress}}/>                                        Address where personel files will be kept, if different
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="personelAddressStreet"> <span class="" data-content="Street*">Street*</span> </label>
+                                            <input type="text" class="input_field" name="personelAddressStreet" value="{{employerProfileData.personelAddressStreet}}"
+                                                id="personelAddressStreet" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="city"> <span class="" data-content="City*">City*</span> </label>
+                                            <input type="text" class="input_field" name="personelAddressCity" value="{{employerProfileData.personelAddressCity}}" id="personelAddressCity"
+                                                data-parsley-pattern="[a-zA-Z ]*$" Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="state"> <span class="" data-content="State*">State*</span> </label>
+                                            <input type="text" class="input_field" name="personelAddressState" value="{{employerProfileData.personelAddressState}}" id="personelAddressState"
+                                                data-parsley-pattern="[a-zA-Z ]*$" Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="zipcode"> <span class="" data-content="Zip Code*">Zip Code*</span> </label>
+                                            <input type="text" class="input_field validationNumber" value="{{employerProfileData.personelAddressZipCode}}" name="personelAddressZipCode"
+                                                id="personelAddressZipCode" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="County"> <span class="" data-content="County*">County*</span> </label>
+                                            <input type="text" class="input_field" value="{{employerProfileData.personelAddressCounty}}" name="personelAddressCounty"
+                                                id="personelAddressCounty" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                                        </div>
+                                        <div class="col-sm-6 input">
+                                            <label class="" for="country"> <span class="" data-content="Country*">Country*</span> </label>
+                                            <!-- <input type="text" class="input_field" name="country" value="{{attorneyProfileData.country}}" id="country" Required> -->
+                                            <select class="input_field" name="personelAddressCountry" id="personelAddressCountry">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../employerProfileData.personelAddressCountry name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="County of employer*">County of employer*</span> </label>
+                                <input type="text" class="input_field" name="countyOfEmployer" value="{{employerProfileData.countyOfEmployer}}" id="job-description"
+                                    data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+
+                                <label class="" for="from"> <span class="" data-content="From*">Date of intended employment From (MM/DD/YYYY)*</span> </label>                                {{#if employerProfileData.from}}
+                                <input name="from" type="text" value="{{formatDate employerProfileData.from 'MM/DD/YYYY'}}" class="input_field datepicker validationRequired"
+                                    data-date-end-date="0d">
+                                    {{else}}
+                                    <input name="from" type="text" placeholder="MM/DD/YYYY" class="input_field datepicker validationRequired" data-date-end-date="0d">                                    {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="to"> <span class="" data-content="To*">Date of intended employment To (MM/DD/YYYY)*</span> </label>                                {{#if employerProfileData.to}}
+                                <input name="to" type="text" value="{{formatDate employerProfileData.to 'MM/DD/YYYY'}}" class="datepicker input_field" data-date-end-date="0d"
+                                    Required>
+                                    {{else}}
+                                    <input name="to" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field" data-date-end-date="0d" Required>                                    {{/if}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Type of Business*">Type of Business*</span> </label>
+                                <input type="text" class="input_field" name="businessType" value="{{employerProfileData.businessType}}" id="job-description"
+                                    data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Year company established*">Year company established*</span> </label>
+                                <input type="text" class="input_field" name="year" value="{{employerProfileData.year}}" id="job-description" data-parsley-pattern="[a-zA-Z ]*$"
+                                    Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="In care of Name*">In care of Name*</span> </label>
+                                <input type="text" class="input_field" name="inCareOfName" value="{{employerProfileData.inCareOfName}}" id="job-description"
+                                    data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Number*">Number*</span> </label>
+                                <input type="text" class="input_field validationNumber" name="number" value="{{employerProfileData.number}}" id="job-description"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="FEI_Number*">Federal Employer Identification Number*</span> </label>
+                                <input type="text" class="input_field" name="FEI_Number" value="{{employerProfileData.FEI_Number}}" id="job-description"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="LCA_ETA_Case_Number*">LCA Or ETA Case Number*</span> </label>
+                                <input type="text" class="input_field" name="LCA_ETA_Case_Number" value="{{employerProfileData.LCA_ETA_Case_Number}}" id="job-description"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Province*">Province*</span> </label>
+                                <input type="text" class="input_field" name="province" value="{{employerProfileData.province}}" id="job-description" data-parsley-pattern="[a-zA-Z ]*$"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="DayTime_Number*">DayTime Number*</span> </label>
+                                <input type="text" class="input_field" name="DayTime_Number" value="{{employerProfileData.DayTime_Number}}" id="job-description"
+                                    data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Current number of employees (only W-2, not 1099)*">Current number of employees (only W-2, not 1099)*</span> </label>
+                                <input type="text" class="input_field validationNumber" name="numberofEmp" value="{{employerProfileData.numberofEmp}}" id="job-description"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Number of H-1B employees*">Number of H-1B employees*</span> </label>
+                                <input type="text" class="input_field validationNumber" name="numberofH1BEmp" value="{{employerProfileData.numberofH1BEmp}}"
+                                    id="job-description" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Gross revenue*">Gross revenue*</span> </label>
+                                <input type="text" class="input_field" name="grossIncome" value="{{employerProfileData.grossIncome}}" id="job-description"
+                                    data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Net Annual income*">Net annual income*</span> </label>
+                                <input type="text" class="input_field" name="netIncome" value="{{employerProfileData.netIncome}}" id="job-description" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$"
+                                    Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Nature of the employer’s business*">Nature of the employer’s business*</span> </label>
+                                <input type="text" class="input_field" name="natureOfEmpbusi" value="{{employerProfileData.natureOfEmpbusi}}" id="job-description"
+                                    data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Has your business ever received TARP funding?*">Has your business ever received TARP funding?*</span> </label>
+                                <select class="input_field" name="isTRPFunding" placeholder="">
+                                    <option value="yes" {{optionIsSelected employerProfileData.isTRPFunding "yes"}}>Yes.</option>
+                                    <option value="no" {{optionIsSelected employerProfileData.isTRPFunding "no"}}>No.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="job-description"> <span class="" data-content="Describe the typical employee performance review process*">Describe the typical employee performance review process*</span> </label>
+                                <!--<input type="text" class="input_field" name="permonceReviewProcess" value="{{employerProfileData.natureOfEmpbusi}}" id="job-description" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>-->
+                                <textarea class="input_field" name="permonceReviewProcess" placeholder="" value="{{employerProfileData.permonceReviewProcess}}"
+                                    id="permonceReviewProcess" Required></textarea>
+                            </div>
+                        </div>
+
+                        {{#if isEmployer}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                            </div>
+                        </div>
+                        {{/if}} {{loadFormValidationMessage}}
+                    </form>
+                </fieldset>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+  <div class="content animate-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="hpanel">
+          <div class="panel-heading hbuilt">
+            <div class="panel-tools">
+              <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+            </div>
+            Employer Docs 
+          </div>
+          <div class="panel-body">
+            <div class="text-center m-b-md">
+              
+            </div>
+            <table border="1">
+              <thead>
+                <tr>
+                   <th colspan="2">
+                    Document Name
+                  </th>
+                  <th colspan="3">
+                    Employer Uploaded Docs
+                  </th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                     {{#each theFilesForEmployerProfileDocList}}
+
+                          <tr>
+                          <td colspan="2" >{{this.value}}</td>
+                              {{#if this.employerDoc}}
+                          <td>{{this.employerDoc.original.name}}</td>
+                          <td><a href="{{this.employerDoc.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                          {{#if currentUserRole 'employer'}}
+                          <td><input class="your-upload-class employeeUpload" doc-type="{{this.key}}" type="file"></td>
+
+                          {{/if}} {{else}}
+
+                          <td>Employer not upload any document.</td>
+                          <td></td>
+                          {{#if currentUserRole 'employer'}}
+                          <td><input class="your-upload-class employeeUpload" doc-type="{{this.key}}" type="file"></td>
+
+                          {{/if}} {{/if}}
+
+                        </tr>
+
+                          {{/each}}
+                       
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+    {{> comments keyField="employerProfile"}}
+
+</template>

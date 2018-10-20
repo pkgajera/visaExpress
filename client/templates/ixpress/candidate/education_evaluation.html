@@ -1,0 +1,64 @@
+<template name="educationEvaluation">
+
+   <style>
+            table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid 	#FFFFFF;
+    text-align: left;
+    padding: 4px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+        </style>
+        {{> commentsread keyField="educationEvaluation" approvalData=approvalData}}
+
+    <div class="normalheader transition">
+                  <div class="hpanel">
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                       Education Evaluation(If applicable)
+                    </h2>
+                    {{#if currentUserRole 'candidate'}}
+                    <input class="your-upload-class" type="file">
+                    {{/if}}
+  </div>
+  </div>
+  </div>
+
+  <div class="content animate-panel">
+
+            <div class="hpanel">
+                <div class="panel-body">
+   <table border="1">
+    <tbody>
+      {{#if currentUserRole 'candidate'}}
+      {{#each theFiles}}
+      <tr>
+        <td>{{original.name}}</td>
+        <td><a href="{{url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+        <td><button id="deleteFileButton">X</button></td>
+      </tr>
+      {{/each}}
+      {{else}}
+      {{#each theFiles}}
+      <tr>
+        <td>{{original.name}}</td>
+        <td><a href="{{url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+        <!-- <td><button id="deleteFileButton">X</button></td> -->
+      </tr>
+      {{/each}}
+      {{/if}}
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+    {{> comments keyField="educationEvaluation"}}
+</template>

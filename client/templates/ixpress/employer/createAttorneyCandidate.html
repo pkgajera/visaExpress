@@ -1,0 +1,87 @@
+<template name="createAttorneyCandidate">
+    <div class="content animate-panel">
+        <div class="hpanel">
+            <div class="panel-body">
+                <h2 class="font-light m-b-xs">
+                        Create New Attorney or Candidate
+                    </h2>
+                <small>Create new Attorney or Candidate by sending invitation</small>
+                <br/>
+                <br/>
+                <form id="contactform" role="form">
+
+                    <div class="row">
+                        <div class="col-sm-12 input">
+                            <select class="form-control select2" name="role" id="userRole" required>
+                                <option value="candidate">Candidate</option>
+                                <option value="attorney">Attorney</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 input">
+                          <label class="" for="name"> <span class="" data-content="Name">Name*</span> </label>
+                            <input type="text " class="input_field" name="name" id="name" required="">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 input">
+                          <label class="" for="email"> <span class="" data-content="Email ID*">Email ID*</span> </label>
+                            <input type="email" class="input_field" name="email" id="email" required="">
+                        </div>
+                        <div class="col-sm-12 input">
+                          <label class="" for="comments"> <span class="" data-content="Comments">Comments</span> </label>
+                            <input type="text" class="input_field" name="comments" id="comments" required="">
+                        </div>
+                    </div>
+
+                    <div id="candidateSection">
+                    <div class="row">
+                      <div class="col-sm-12 input">
+                        <label class="" for="visaType"> <span class="" data-content="Visa Type*">Visa Type*</span> </label>
+                            <select class="form-control select2" name="visaType" required>
+                               {{#each visaType}}
+                                <option value="{{this.key}} ">{{this.value}}</option>
+                                {{/each}}
+                            </select>
+                      </div>
+                      <div class="col-sm-12 input">
+                        <label class="" for="processStatus"> <span class="" data-content="process Status">Process Status</span> </label>
+                         <select class="form-control select2" name="processStatus" required>
+                                {{#each processType}}
+                                <option value="{{this.key}} ">{{this.value}}</option>
+                                {{/each}}
+                            </select>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-12 input">
+                        <label class="" for="DOB"> <span class="" data-content="DOB*">Date of birth*</span> </label>
+                            <input id="dob" name="dob" type="text" placeholder="MM/DD/YYYY" class="input_field datepicker validationRequired" data-date-end-date="0d">
+                      </div>
+                      <div class="col-sm-12 input">
+                        <label class="" for="phone"> <span class="" data-content="Phone No.">Phone No.</span> </label>
+                          <input type="text" class="input_field validationNumber" name="phone"  data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" Required>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-12 input">
+                        <label class="" for="location"> <span class="" data-content="LocationDOB*">Location*</span> </label>
+                            <input type="text" class="input_field" name="location" id="location" required="">
+                      </div>
+                  </div>
+                  </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input class="button" type="submit" value="Send Invitation" name="contact-submit">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+</template>

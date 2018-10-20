@@ -1,0 +1,433 @@
+<template class="input_field" name="EduHistory">
+  {{> commentsread keyField="educationHistory" approvalData=approvalData}}
+    <div class="content animate-panel">
+
+            <div class="hpanel">
+
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                        History of Education
+                    </h2>
+                    <small>Please, enter all fields</small>
+                    <br/>
+                    <br/>
+
+                    <form id="eduHitoryForm">
+
+                        <h3 class="font-light m-b-xs">
+                            High School
+                        </h3>
+
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                              <label>Name of Highschool*</label>
+                              <input type="text" class="input_field"  name="highSchool_nameofSchool"  value="{{candidateEducationData.highSchool.nameofSchool}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+                               <label>Major Field of Study*</label>
+                               <input type="text" class="input_field" name="highSchool_fieldOfStudySchool"  value="{{candidateEducationData.highSchool.fieldOfStudySchool}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                               </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                                <label>Degree*</label>
+                                <input type="text" class="input_field" name="highSchool_degree"  value="{{candidateEducationData.highSchool.degree}}" data-parsley-pattern="^[a-zA-Z]+$" Required>
+
+                            </div>
+                            <div class="col-sm-6 input">
+                                   <label>Degree Evaluated?</label>
+                                   <input type="text" class="input_field" name="highSchool_degreeEvaluated"  value="{{candidateEducationData.highSchool.degreeEvaluated}}" data-parsley-pattern="^[a-zA-Z]+$">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label>Degree Received Date (MM/DD/YYYY)*</label>
+                                {{#if candidateEducationData.highSchool.recievedDate}}
+                                <input name="highSchool_recievedDate" type="text" value="{{formatDate candidateEducationData.highSchool.recievedDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                                {{else}}
+                                <input name="highSchool_recievedDate" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 input">
+                                <label>Street Address*</label>
+                                <input type="text" class="input_field" name="highSchool_streetAddress"  value="{{candidateEducationData.highSchool.streetAddress}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Country*</label>
+                                <!-- <input type="text" class="input_field" name="highSchool_country"  value="{{candidateEducationData.highSchool.country}}" data-parsley-pattern="^[a-zA-Z]+$" Required> -->
+                                <select class="input_field" name="highSchool_country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../candidateEducationData.highSchool_country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                                <label>City* </label>
+                                <input type="text" class="input_field" name="highSchool_city"  value="{{candidateEducationData.highSchool.city}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>State* </label>
+                                <input type="text" class="input_field" name="highSchool_state"  value="{{candidateEducationData.highSchool.state}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label>Postal (Zip Code)*</label>
+                              <input type="text"  name="highSchool_zipCode" class="input_field validationNumber"  value="{{candidateEducationData.highSchool.zipCode}}" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                               <label>Attended From (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.highSchool.attendedFromDate}}
+                               <input  name="highSchool_attendedFromDate" type="text" value="{{formatDate candidateEducationData.highSchool.attendedFromDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{else}}
+                               <input  name="highSchool_attendedFromDate" type="text"  placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{/if}}
+                            </div>
+
+                            <div class="col-sm-4 input">
+                               <label>Attended Until (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.highSchool.attendedToDate}}
+                               <input  name="highSchool_attendedToDate" type="text" value="{{formatDate candidateEducationData.highSchool.attendedToDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{else}}
+                               <input  name="highSchool_attendedToDate" type="text"  placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{/if}}
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Total Years* </label>
+                                <input type="text"  name="highSchool_totalYears" class="input_field validationNumber"  value="{{candidateEducationData.highSchool.totalYears}}"  Required>
+
+                            </div>
+                        </div>
+                        <!--BS DEGREE-->
+                        <h3 class="font-light m-b-xs">
+                            Bachelor's Degree
+                        </h3>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label>Name of School*</label>
+                              <input type="text" class="input_field" name="bachelor_nameofSchool"  value="{{candidateEducationData.bachelor.nameofSchool}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                               <label>Major Field of Study*</label>
+                               <input type="text" class="input_field" name="bachelor_fieldOfStudySchool"  value="{{candidateEducationData.bachelor.fieldOfStudySchool}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                               </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                                <label>Degree*</label>
+                                <input type="text" class="input_field" name="bachelor_degree"  value="{{candidateEducationData.bachelor.degree}}" data-parsley-pattern="^[a-zA-Z]+$" Required>
+
+                            </div>
+                            <div class="col-sm-6 input">
+                                   <label>Degree Evaluated?</label>
+                                   <input type="text" class="input_field" name="bachelor_degreeEvaluated"  value="{{candidateEducationData.bachelor.degreeEvaluated}}" data-parsley-pattern="^[a-zA-Z]+$">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label>Degree Received Date (MM/DD/YYYY)*</label>
+                                {{#if candidateEducationData.bachelor.recievedDate}}
+                                <input name="bachelor_recievedDate" type="text" value="{{formatDate candidateEducationData.bachelor.recievedDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                                {{else}}
+                                <input name="bachelor_recievedDate" type="text"  placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 input">
+                                <label>Street Address*</label>
+                                <input type="text" class="input_field" name="bachelor_streetAddress"  value="{{candidateEducationData.bachelor.streetAddress}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Country*</label>
+                                <!-- <input type="text" class="input_field" name="bachelor_country"  value="{{candidateEducationData.bachelor.country}}" data-parsley-pattern="^[a-zA-Z]+$" Required> -->
+                                <select class="input_field" name="bachelor_country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../candidateEducationData.bachelor_country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                                <label>City* </label>
+                                <input type="text" class="input_field" name="bachelor_city"  value="{{candidateEducationData.bachelor.city}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>State* </label>
+                                <input type="text" class="input_field" name="bachelor_state"  value="{{candidateEducationData.bachelor.state}}" data-parsley-pattern="[a-zA-Z ]*$" Required>
+
+                            </div>
+                            <div class="col-sm-4 input">
+                              <label>Postal (Zip Code)*</label>
+                              <input type="text"  name="bachelor_zipCode" class="input_field validationNumber"  value="{{candidateEducationData.bachelor.zipCode}}" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                               <label>Attended From (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.bachelor.attendedFromDate}}
+                               <input  name="bachelor_attendedFromDate" type="text" value="{{formatDate candidateEducationData.bachelor.attendedFromDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{else}}
+                               <input  name="bachelor_attendedFromDate" type="text"  placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{/if}}
+                            </div>
+
+                            <div class="col-sm-4 input">
+                               <label>Attended Until (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.bachelor.attendedToDate}}
+                               <input  name="bachelor_attendedToDate" type="text" value="{{formatDate candidateEducationData.bachelor.attendedToDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{else}}
+                               <input  name="bachelor_attendedToDate" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d">
+                               {{/if}}
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Total Years* </label>
+                                <input type="text" name="bachelor_totalYears" class=" input_field validationNumber"  value="{{candidateEducationData.bachelor.totalYears}}" Required>
+
+                            </div>
+                        </div>
+                            <!-- <div class="row">
+                                <div class="col-sm-12">
+                                    <input class="button" type="submit" value="NEXT" class="input_field" name="contact-submit">
+                                </div>
+                            </div> -->
+                        <!--MS-->
+                        <h3 class="font-light m-b-xs">
+                            Master's Degree (Optional)
+                        </h3>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label>Name of School</label>
+                              <input type="text" class="input_field" name="master_nameofSchool"  value="{{candidateEducationData.master.nameofSchool}}" data-parsley-pattern="[a-zA-Z ]*$" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                               <label>Major Field of Study</label>
+                               <input type="text" class="input_field" name="master_fieldOfStudySchool"  value="{{candidateEducationData.master.fieldOfStudySchool}}" data-parsley-pattern="[a-zA-Z ]*$" >
+
+                               </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                                <label>Degree*</label>
+                                <input type="text" class="input_field" name="master_degree"  value="{{candidateEducationData.master.degree}}" data-parsley-pattern="^[a-zA-Z]+$" >
+
+                            </div>
+                            <div class="col-sm-6 input">
+                                   <label>Degree Evaluated?</label>
+                                   <input type="text" class="input_field" name="master_degreeEvaluated"  value="{{candidateEducationData.master.degreeEvaluated}}" data-parsley-pattern="^[a-zA-Z]+$">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label>Degree Received Date (MM/DD/YYYY)*</label>
+                                {{#if candidateEducationData.master.recievedDate}}
+                                <input  name="master_recievedDate" type="text" value="{{formatDate candidateEducationData.master.recievedDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                                {{else}}
+                                <input  name="master_recievedDate" type="text"  placeholder="MM/DD/YYYY"  class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 input">
+                                <label>Street Address*</label>
+                                <input type="text" class="input_field" name="master_streetAddress"  value="{{candidateEducationData.master.streetAddress}}" data-parsley-pattern="[a-zA-Z ]*$" >
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Country*</label>
+                                <!-- <input type="text" class="input_field" name="master_country"  value="{{candidateEducationData.master.country}}" data-parsley-pattern="^[a-zA-Z]+$" > -->
+                                <select class="input_field" name="master_country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../candidateEducationData.master_country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                                <label>City* </label>
+                                <input type="text" class="input_field" name="master_city"  value="{{candidateEducationData.master.city}}" data-parsley-pattern="[a-zA-Z ]*$" >
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>State* </label>
+                                <input type="text" class="input_field" name="master_state"  value="{{candidateEducationData.master.state}}" data-parsley-pattern="[a-zA-Z ]*$" >
+
+                            </div>
+
+                            <div class="col-sm-4 input">
+                              <label>Postal (Zip Code)*</label>
+                              <input type="text"  name="master_zipCode" class=" input_field validationNumber"  value="{{candidateEducationData.master.zipCode}}">
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                               <label>Attended From (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.master.attendedFromDate}}
+                               <input  name="master_attendedFromDate" type="text" value="{{formatDate candidateEducationData.master.attendedFromDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{else}}
+                               <input  name="master_attendedFromDate" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{/if}}
+                            </div>
+
+                            <div class="col-sm-4 input">
+                               <label>Attended Until (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.master.attendedToDate}}
+                               <input  name="master_attendedToDate" type="text" value="{{formatDate candidateEducationData.master.attendedToDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{else}}
+                               <input  name="master_attendedToDate" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{/if}}
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Total Years* </label>
+                                <input type="text"  name="master_totalYears" class="input_field validationNumber"  value="{{candidateEducationData.master.totalYears}}">
+
+                            </div>
+                        </div>
+                        <!--PhD. DEGREE-->
+                        <h3 class="font-light m-b-xs">
+                            PhD. Degree (Optional)
+                        </h3>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label>Name of School</label>
+                              <input type="text" class="input_field" name="phd_nameofSchool"  value="{{candidateEducationData.phd.nameofSchool}}" data-parsley-pattern="[a-zA-Z ]*$" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                               <label>Major Field of Study</label>
+                               <input type="text" class="input_field" name="phd_fieldOfStudySchool"  value="{{candidateEducationData.phd.fieldOfStudySchool}}" data-parsley-pattern="[a-zA-Z ]*$" >
+
+                               </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 input">
+                                <label>Degree*</label>
+                                <input type="text" class="input_field" name="phd_degree"  value="{{candidateEducationData.phd_degree}}" data-parsley-pattern="^[a-zA-Z]+$" >
+
+                            </div>
+                            <div class="col-sm-6 input">
+                                   <label>Degree Evaluated?</label>
+                                   <input type="text" class="input_field" name="phd_degreeEvaluated"  value="{{candidateEducationData.phd_degreeEvaluated}}" data-parsley-pattern="^[a-zA-Z]+$">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label>Degree Received Date (MM/DD/YYYY)*</label>
+                                {{#if candidateEducationData.phd.recievedDate}}
+                                <input  name="phd_recievedDate" type="text" value="{{formatDate candidateEducationData.phd.recievedDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                                {{else}}
+                                <input  name="phd_recievedDate" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 input">
+                                <label>Street Address*</label>
+                                <input type="text" class="input_field" name="phd_streetAddress"  value="{{candidateEducationData.phd.streetAddress}}" data-parsley-pattern="[a-zA-Z ]*$" >
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Country*</label>
+                                <!-- <input type="text" class="input_field" name="phd_country"  value="{{candidateEducationData.phd.country}}" data-parsley-pattern="^[a-zA-Z]+$" > -->
+                                <select class="input_field" name="phd_country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../candidateEducationData.phd_country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                                <label>City* </label>
+                                <input type="text" class="input_field" name="phd_city"  value="{{candidateEducationData.phd.city}}" data-parsley-pattern="^[a-zA-Z]+$" >
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>State* </label>
+                                <input type="text" class="input_field" name="phd_state"  value="{{candidateEducationData.phd.state}}" data-parsley-pattern="^[a-zA-Z]+$" >
+
+                            </div>
+                            <div class="col-sm-4 input">
+                                  <label>Postal (Zip Code)*</label>
+                                  <input type="text"  name="phd_zipCode" class="input_field validationNumber"  value="{{candidateEducationData.phd.zipCode}}" >
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 input">
+                               <label>Attended From (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.phd.attendedFromDate}}
+                               <input name="phd_attendedFromDate" type="text" value="{{formatDate candidateEducationData.phd.attendedFromDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{else}}
+                               <input name="phd_attendedFromDate" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{/if}}
+                            </div>
+
+                            <div class="col-sm-4 input">
+                               <label>Attended Until (MM/DD/YYYY)* </label>
+                               {{#if candidateEducationData.phd.attendedToDate}}
+                               <input  name="phd_attendedToDate" type="text" value="{{formatDate candidateEducationData.phd.attendedToDate 'MM/DD/YYYY'}}" class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{else}}
+                               <input  name="phd_attendedToDate" type="text" placeholder="MM/DD/YYYY"  class="datepicker input_field validationRequired" data-date-end-date="0d" >
+                               {{/if}}
+                            </div>
+                            <div class="col-sm-4 input">
+                                <label>Total Years* </label>
+                                <input type="text" name="phd_totalYears" class="input_field validationNumber"  value="{{candidateEducationData.phd.totalYears}}"  >
+
+                            </div>
+                        </div>
+                        {{#if isCandidate}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{loadFormValidationMessage}}
+</form>
+            </div>
+
+                </div>
+                </div>
+                {{> comments keyField="educationHistory"}}
+
+
+</template>

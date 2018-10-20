@@ -1,0 +1,99 @@
+<template name="navigation">
+
+    <aside id="menu">
+        <div id="navigation">
+            {{#if currentUser}}
+            <div class="profile-picture">
+
+
+                <div class="stats-label text-color">
+
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <medium class="text-muted">{{currentUser.profile.name}} <b class="caret"></b></medium>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            {{#if currentUserRole 'candidate'}}
+                            <li><a href="{{pathFor route='candidateProfile'}}">Profile</a></li>
+                            {{/if}} {{#if currentUserRole 'attorney'}}
+                            <li><a href="{{pathFor route='attorneyProfile'}}">Profile</a></li>
+                            <li><a href="{{pathFor route='proposedJob' _type='attorney'}}">Proposed Job</a></li>
+                            {{/if}} {{#if currentUserRole 'employer'}}
+                            <li><a href="{{pathFor route='employerProfile'}}">Profile</a></li>
+                            <li><a href="{{pathFor route='proposedJob' _type='employer'}}">Proposed Job</a></li>
+                            {{/if}}
+                            <li><a href="{{pathFor route='changePassword'}}">Change Password</a></li>
+                            <li><a id="linkLogout">Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            {{/if}}
+            <ul class="nav" id="side-menu">
+                <!-- <li class="{{isActiveRoute regex='dashboard'}}">
+                    <a href="{{pathFor route='employerDashboard'}}"> <span class="nav-label">Dashboard</span>  </a>
+                </li>
+                 <li class="{{isActiveRoute regex='dashboard'}}">
+                    <a href="{{pathFor route='attorneyList'}}"> <span class="nav-label">Attorney List</span> </a>
+                </li>
+
+                <li class="{{isActiveRoute regex='loadingButtons|codeEditor|panels|typography|buttons|components|alerts|modals|draggable|nestableList|tour|icons'}}">
+                    <a href="#"><span class="nav-label">create</span><span class="fa arrow"></span> </a>
+                    <ul class="nav nav-second-level {{isActiveRoute regex='loadingButtons|codeEditor|panels|typography|buttons|components|alerts|modals|draggable|nestableList|tour|icons' className='in'}}">
+                        <li class="{{isActiveRoute regex='panels'}}"><a href="{{pathFor route='newCandidate'}}">Create Candidate</a></li>
+                        <li class="{{isActiveRoute regex='typography'}}"><a href="{{pathFor route='newAttorney'}}">Create Attorney</a></li>
+
+                    </ul>
+                </li>  -->
+                <!-- {{#if menuAccess 'dashboard'}}
+                <li class="{{isActiveRoute regex='dashboard'}}">
+                    <a href="{{pathFor route='employerDashboard'}}"> <span class="nav-label">Dashboard</span>  </a>
+                </li>
+                {{/if}} -->
+
+                {{#if currentUserRole 'candidate'}}
+                <li>
+                    <a href="{{pathFor route='cand_dashboard'}}"> <span class="nav-label">DashBoard</span> </a>
+                </li>
+                {{/if}} {{#if menuAccess 'employerList'}}
+                <li class="{{isActiveRoute regex='employerList'}}">
+                    <a href="{{pathFor route='employerList'}}"> <span class="nav-label">Company List</span> </a>
+                </li>
+                {{/if}} {{#if menuAccess 'candidateList'}}
+                <li class="{{isActiveRoute regex='candidateList'}}">
+                    <!-- <a href="{{pathFor route='candidateList' data=optional}}"> <span class="nav-label">Candidate List</span>  </a> -->
+                    <a href="/candidateList/optional"> <span class="nav-label">Candidate List</span> </a>
+                </li>
+                {{/if}} {{#if menuAccess 'createEmployerCandidate'}}
+                <!-- <li class="{{isActiveRoute regex='createEmployerCandidate'}}">
+                    <a href="{{pathFor route='createEmployerCandidate'}}"> <span class="nav-label">Create Employer/Candidate</span>  </a>
+                </li> -->
+                <li class="{{isActiveRoute regex='createEmployerFromAttorney'}}">
+                    <a href="{{pathFor route='createEmployerFromAttorney'}}"> <span class="nav-label">Invite a Company</span> </a>
+                </li>
+                {{/if}} {{#if menuAccess 'createCandidateFromAttorney'}}
+                <li class="{{isActiveRoute regex='createCandidateFromAttorney'}}">
+                    <a href="{{pathFor route='createCandidateFromAttorney'}}"> <span class="nav-label">Invite a Candidate</span> </a>
+                </li>
+                {{/if}} {{#if menuAccess 'createAttorneyCandidate'}}
+                <li class="{{isActiveRoute regex='createAttorneyCandidate'}}">
+                    <a href="{{pathFor route='createAttorneyCandidate'}}"> <span class="nav-label">Invite a Attorney/Candidate</span> </a>
+                </li>
+                {{/if}}
+                <li class="{{isActiveRoute regex='connectList'}}">
+                    <a href="{{pathFor route='connectList'}}"> <span class="nav-label">Connect List</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex='chatPanel'}}">
+                    <a href="{{pathFor route='chatPanel'}}"> <span class="nav-label">Chat</span>
+                    <!--{{#if messageCountSum}}
+                    <span class="label label-warning pull-right">{{messageCountSum}}</span>
+                    {{/if}}-->
+                     </a>
+                </li>
+
+            </ul>
+        </div>
+    </aside>
+
+</template>

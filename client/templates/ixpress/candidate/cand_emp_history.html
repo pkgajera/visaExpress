@@ -1,0 +1,142 @@
+<template name="CandEmpHistory">
+  {{> commentsread keyField="employmentHistory" approvalData=approvalData}}
+
+    <div class="content animate-panel">
+
+            <div class="hpanel">
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                        History of Employment
+                    </h2>
+                    <small>Please, enter all fields</small>
+                    <br/>
+                    <br/>
+                    <fieldset class="form2">
+                    <form id="emphistoryform">
+
+                        <h4 class="font-light m-b-xs">
+                            NOTE: Please Include your Current Employment.
+                        </h4>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="empr-name"> <span class="" data-content="Employer name*">Employer Name*</span> </label>
+                                <input type="text" class="input_field" name="name"  value="{{candidateEmployementData.name}}" id="empr-name" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="job-title"> <span class="" data-content="Job Title*">Job Title*</span> </label>
+                                <input type="text" class="input_field" name="jobTitle" value="{{candidateEmployementData.jobTitle}}" id="job-title" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="job-description"> <span class="" data-content="Job Description*">Job Description*</span> </label>
+                                <input type="text" class="input_field" name="jobDescription" value="{{candidateEmployementData.jobDescription}}" id="job-description" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="street"> <span class="" data-content="Street*">Street*</span> </label>
+                                <input type="text" class="input_field" name="street" value="{{candidateEmployementData.street}}" id="street" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="unit"> <span class="" data-content="Unit*">Unit*</span> </label>
+                                <input type="text" class="input_field" name="unit" value="{{candidateEmployementData.unit}}" id="unit" data-parsley-pattern="^[ A-Za-z0-9_@./#&+-]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="city"> <span class="" data-content="City*">City*</span> </label>
+                                <input type="text" class="input_field" name="city" value="{{candidateEmployementData.city}}" id="city" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="state"> <span class="" data-content="State*">State*</span> </label>
+                                <input type="text" class="input_field" name="state" value="{{candidateEmployementData.state}}" id="state" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="zipcode"> <span class="" data-content="Zip Code*">Zip Code*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{candidateEmployementData.zipCode}}" name="zipCode" id="zipCode" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="country"> <span class="" data-content="Country*">Country*</span> </label>
+                                <!-- <input type="text" class="input_field" name="country" value="{{candidateEmployementData.country}}" id="country" Required> -->
+                                <select class="input_field" name="country">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../candidateEmployementData.country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="email"> <span class="" data-content="Email*">Email*</span> </label>
+                                <input type="email" class="input_field" name="email"  value="{{candidateEmployementData.email}}" id="email" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="phone"> <span class="" data-content="Phone*">Phone*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{candidateEmployementData.phone}}" name="phone" id="phone" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="fax"> <span class="" data-content="Fax*">Fax*</span> </label>
+                                <input type="text" class="input_field validationNumber" value="{{candidateEmployementData.fax}}" name="fax" id="fax" data-parsley-pattern="/[\+? *[1-9]+]?[0-9 ]+/" Required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="from"> <span class="" data-content="From*">From (MM/DD/YYYY)*</span> </label>
+                                {{#if candidateEmployementData.from}}
+                                <input name="from" type="text" value="{{formatDate candidateEmployementData.from 'MM/DD/YYYY'}}" class="input_field datepicker validationRequired" data-date-end-date="0d">
+                                {{else}}
+                                <input name="from" type="text" placeholder="MM/DD/YYYY" class="input_field datepicker validationRequired" data-date-end-date="0d">
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                                <label class="" for="to"> <span class="" data-content="To*">To (MM/DD/YYYY)*</span> </label>
+                                {{#if candidateEmployementData.to}}
+                                <input name="to" type="text" value="{{formatDate candidateEmployementData.to 'MM/DD/YYYY'}}" class="datepicker input_field" data-date-end-date="0d" Required>
+                                {{else}}
+                                <input name="to" type="text" placeholder="MM/DD/YYYY" class="datepicker input_field" data-date-end-date="0d" Required>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="check"> <span class="" data-content="Check if this is your current EMployment">Check if this is your current Employment</span> </label>
+                              <input type="checkbox" class="i-checks" name="ifthisisYourCurrentEmployement" {{radioIsSelected candidateEmployementData.ifthisisYourCurrentEmployement}} id="check">
+                            </div>
+                        </div>
+                        {{#if isCandidate}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                            </div>
+                        </div>
+                        {{/if}}
+{{loadFormValidationMessage}}
+</form>
+</fieldset>
+            </div>
+
+                </div>
+
+
+
+                </div>
+{{> comments keyField="employmentHistory"}}
+
+</template>

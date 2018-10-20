@@ -1,0 +1,256 @@
+<template name="proposedJob">
+    
+    
+  <!--{{> commentsread keyField="proposedJob" approvalData=approvalData}}-->
+
+    <div class="content animate-panel">
+
+            <div class="hpanel">
+                <div class="panel-body">
+                    <h2 class="font-light m-b-xs">
+                       Proposed Job for the Candidate
+                    </h2>
+                    <small>Please, enter all fields</small>
+                    <br/>
+                    <br/>
+                    <fieldset class="form2">
+                    <form id="proposedJobForm">
+
+
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="Title"> <span class="" data-content="Job title alien will hold?*">Job title alien will hold?*</span> </label>
+                                <input type="text" class="input_field" name="title" placeholder="title" value="{{proposedJobData.title}}" id="title" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="jobDescription"> <span class="" data-content="Detailed description of proposed job duties including the percentage of daily time spent on each job duty?*">Detailed description of proposed job duties including the percentage of daily time spent on each job duty?*</span> </label>
+            <textarea class="input_field" name="jobDescription" placeholder="Requirement capture 10% Analysis 10% Design 15% Development 35% Integration & Testing 20% Deployment 10%" value="{{proposedJobData.jobDescription}}" id="jobDescription" data-parsley-pattern="[a-zA-Z ]*$" Required></textarea>
+                                <!--<input type="textarea" class="input_field" name="jobDescription" placeholder="" value="{{proposedJobData.jobDescription}}" id="jobDescription" data-parsley-pattern="[a-zA-Z ]*$" Required>-->
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-2 input">
+                              <label class="" for="lineOfBusiness"> <span class="" data-content="Are the employee’s Job duties are part of the employer’s general line of business? *">Are the employee’s Job duties are part of the employer’s general line of business? *</span> </label>
+                                <select class="input_field" name="lineOfBusiness" placeholder="">
+                                    <option value="yes" {{optionIsSelected proposedJobData.title "yes"}}>Yes.</option>
+                                    <option value="no" {{optionIsSelected proposedJobData.title "no"}}>No.</option>
+                                </select>
+                                
+                            </div>
+                        
+                         <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="skills"> <span class="" data-content="sWhat specials skills are required to perform the job duties?*">What specials skills are required to perform the job duties?*</span> </label>
+                                <textarea class="input_field" name="skills" placeholder="" value="{{proposedJobData.skills}}" id="skills" data-parsley-pattern="[a-zA-Z ]*$" Required></textarea>
+                                <!--<input type="textarea" class="input_field" name="skills" placeholder="" value="{{proposedJobData.skills}}" id="skills" data-parsley-pattern="[a-zA-Z ]*$" Required>-->
+                            </div>
+                        </div>
+                        
+                         <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="souceOfTools"> <span class="" data-content="What is the source of the instrumentalities and tools required to perform the specialty occupation?*">What is the source of the instrumentalities and tools required to perform the specialty occupation?*</span> </label>
+                                <textarea class="input_field" name="souceOfTools" placeholder="ASP.NET, C#, VISUAL STUDIO 2010, VS STUDIO 2012, SHAREPOINT SERVER, WINDOWS SERVER, LYNC SERVER, QA, QUALITY ASSURANCE, INFRAGESTIC TOOLKIT, SQL SERVER 2012 R2 WITH SSIS, SSRS, AND SSAS PACKAGE." value="{{proposedJobData.souceOfTools}}" id="souceOfTools" data-parsley-pattern="[a-zA-Z ]*$" Required></textarea>
+                              
+                                <!--<input type="textarea" class="input_field" name="souceOfTools" placeholder="" value="{{proposedJobData.souceOfTools}}" id="souceOfTools" data-parsley-pattern="[a-zA-Z ]*$" Required>-->
+                            </div>
+                        </div>
+                      
+                        <div class="row">
+                <div class="col-lg-12">
+                        <div class="hpanel">
+                            <div class="panel-heading hbuilt">
+                              
+                                For each addresses where alien will actually perform the work, list the following:
+                            </div>
+                            <div class="panel-body">
+                            <div class="col-sm-6 input">
+                              <label class="" for="streetName"> <span class="" data-content="Street Name*">Street Name*</span> </label>
+                                <input type="text" class="input_field" name="streetName" placeholder="" value="{{proposedJobData.streetName}}" id="streetName" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="streetNumber"> <span class="" data-content="Street Number*">Street Number*</span> </label>
+                                <input type="text" class="input_field" name="streetNumber" placeholder="" value="{{proposedJobData.streetNumber}}" id="streetNumber" data-parsley-pattern="^[ A-Za-z0-9_@./#&+-]*$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="city"> <span class="" data-content="City*">City*</span> </label>
+                                <input type="text" class="input_field" name="city" placeholder="" value="{{proposedJobData.city}}" id="city" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                             <div class="col-sm-6 input">
+                              <label class="" for="state"> <span class="" data-content="State*">State*</span> </label>
+                                <input type="text" class="input_field" name="state" placeholder="" value="{{proposedJobData.state}}" id="state" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                             <div class="col-sm-6 input">
+                              <label class="" for="zipcode"> <span class="" data-content="Zip Code*">Zip Code*</span> </label>
+                                <input type="text" class="input_field validationNumber" placeholder="" value="{{proposedJobData.zipCode}}" name="zipCode" id="zipCode" data-parsley-patern="^\d{5}(?:[-\s]\d{4})?$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="country"> <span class="" data-content="Country*">Country*</span> </label>
+                                <!-- <input type="text" class="input_field" name="mailing_country" value="{{candidateAddressesData.country}}" id="country" Required> -->
+                                <select class="input_field" name="country" placeholder="">
+                                  {{#each countries}}
+                                  <option value="{{name}}" {{optionIsSelected ../proposedJobData.country name}}>{{name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="durationOfWork"> <span class="" data-content="Duration of work*">Duration of work*</span> </label>
+                                <input type="text" class="input_field" name="durationOfWork" placeholder="" value="{{proposedJobData.durationOfWork}}" id="careof" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+                              <label class="" for="phoneNumber"> <span class="" data-content="Phone number of on-site supervisor: *">Phone number of on-site supervisor: *</span> </label>
+                                <input type="text" class="input_field validationNumber" placeholder="" value="{{proposedJobData.phoneNumber}}" name="phoneNumber" id="phoneNumber" data-parsley-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" Required>
+                            </div>
+                             <div class="col-sm-6 input">
+                              <label class="" for="email"> <span class="" data-content="E-mail of on-site supervisor-*">E-mail of on-site supervisor-*</span> </label>
+                                <input type="email" class="input_field" name="email"  placeholder="" value="{{proposedJobData.email}}" id="email" Required>
+                            </div>
+                             <div class="col-sm-6 input">
+                              <label class="" for="dateOfProject"> <span class="" data-content="Dates of intended work on the project*">Dates of intended work on the project*</span> </label>
+                                <input type="text" class="input_field" name="dateOfProject" placeholder="" value="{{proposedJobData.dateOfProject}}" id="dateOfProject" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                            <div class="col-sm-6 input">
+             <label class="" for="nameOfProject"> <span class="" data-content="Name of the project*">Name of the project*</span> </label>
+                                <input type="text" class="input_field" name="nameOfProject" placeholder="" value="{{proposedJobData.nameOfProject}}" id="nameOfProject" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                      </div>
+                       
+                        <div class="col-sm-2 input">
+                              <label class="" for="addWork"> <span class="" data-content="Does the employer have the right to assign additional work? *">Does the employer have the right to assign additional work? *</span> </label>
+                                <select class="input_field" name="addWork" placeholder="">
+                                    <option value="yes" {{optionIsSelected proposedJobData.title "yes"}}>Yes.</option>
+                                    <option value="no" {{optionIsSelected proposedJobData.title "no"}}>No.</option>
+                                </select>
+                                
+                            </div>
+
+
+                             <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="howLongToWork"> <span class="" data-content="To what extent does the employee decide when and how long to work? *">To what extent does the employee decide when and how long to work? *</span> </label>
+                                <input type="text" class="input_field" name="howLongToWork" placeholder="8 hours a day" value="{{proposedJobData.howLongToWork}}" id="howLongToWork" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                          <div class="row">
+                            <div class="col-sm-12 input">
+                              <label class="" for="modeOfPay"> <span class="" data-content="What is the method of payment of the employee’s salary (direct deposit, cash, etc.)?*">What is the method of payment of the employee’s salary (direct deposit, cash, etc.)?*</span> </label>
+                                <input type="text" class="input_field" name="modeOfPay" placeholder="" value="{{proposedJobData.modeOfPay}}" id="modeOfPay" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="taxTreatment"> <span class="" data-content="What is the tax treatment of the employee (W-2, 1099, etc.)?*">What is the tax treatment of the employee (W-2, 1099, etc.)?*</span> </label>
+                                <input type="text" class="input_field" name="taxTreatment" placeholder="" value="{{proposedJobData.taxTreatment}}" id="taxTreatment" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="empRoles"> <span class="" data-content="What is the employee’s role in hiring, firing and paying assistants? *">What is the employee’s role in hiring, firing and paying assistants? *</span> </label>
+                                <input type="text" class="input_field" name="empRoles" placeholder="" value="{{proposedJobData.empRoles}}" id="empRoles" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-2 input">
+                              <label class="" for="rulesRegulations"> <span class="" data-content="Can the employer hire and fire the employee and set rules and regulations regarding their work?*">Can the employer hire and fire the employee and set rules and regulations regarding their work?*</span> </label>
+                                <select class="input_field" name="rulesRegulations" placeholder="">
+                                    <option value="yes" {{optionIsSelected proposedJobData.title "yes"}}>Yes.</option>
+                                    <option value="no" {{optionIsSelected proposedJobData.title "no"}}>No.</option>
+                                </select>
+                                
+                            </div>
+
+
+                        <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="report"> <span class="" data-content="Does the employee report to someone higher in the organization, and if so, who*">Does the employee report to someone higher in the organization, and if so, who*</span> </label>
+                                <input type="text" class="input_field" name="report" placeholder="" value="{{proposedJobData.report}}" id="report" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+
+                         <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="rateOfPay"> <span class="" data-content="Rate of pay?*">Rate of pay?*</span> </label>
+                                <input type="text" class="input_field" name="rateOfPay" placeholder="$65K/Year" value="{{proposedJobData.rateOfPay}}" id="rateOfPay" Required>
+                            </div>
+                        </div>
+
+
+
+                         <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="otherCompensation"> <span class="" data-content="Other compensation, if any, the alien will receive (benefits, 401k, etc.)?*">Other compensation, if any, the alien will receive (benefits, 401k, etc.)?*</span> </label>
+                                <input type="text" class="input_field" name="otherCompensation" placeholder="HEALTH, DENTAL, VISION, AND LIFE INSURANDE; AND 401K PLAN" value="{{proposedJobData.otherCompensation}}" id="otherCompensation" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                         <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="NumberOfHoursPerWeek"> <span class="" data-content="Number of hours alien will work per week?*">Number of hours alien will work per week?*</span> </label>
+                                <input type="text" class="input_field" name="NumberOfHoursPerWeek" placeholder="40 Hrs" value="{{proposedJobData.NumberOfHoursPerWeek}}" id="NumberOfHoursPerWeek" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="dailyWorkSchedule"> <span class="" data-content="Alien’s daily work schedule? *">Alien’s daily work schedule? *</span> </label>
+                                <input type="text" class="input_field" name="dailyWorkSchedule" placeholder="M-F 9am -5pm" value="{{proposedJobData.dailyWorkSchedule}}" id="dailyWorkSchedule" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+
+                         <div class="row">
+                           <div class="col-sm-12 input">
+                              <label class="" for="datesOfExpectedEmployee"> <span class="" data-content="Dates of expected employment?*">Dates of expected employment?*</span> </label>
+                                <input type="text" class="input_field" name="datesOfExpectedEmployee" placeholder="USCIS Approval" value="{{proposedJobData.datesOfExpectedEmployee}}" id="datesOfExpectedEmployee" data-parsley-pattern="[a-zA-Z ]*$" Required>
+                            </div>
+                        </div>
+
+
+                         <div class="col-sm-2 input">
+                              <label class="" for="jobUnionized"> <span class="" data-content="Is the job unionized?*">Is the job unionized?*</span> </label>
+                                <select class="input_field" name="jobUnionized" placeholder="">
+                                    <option value="no" {{optionIsSelected proposedJobData.title "no"}}>No.</option>
+                                    <option value="yes" {{optionIsSelected proposedJobData.title "yes"}}>Yes.</option>
+                                </select>
+                                
+                            </div>
+
+
+                        
+                        {{#if ifNotCandidate}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input class="button" type="submit" value="SUBMIT" name="contact-submit">
+                            </div>
+                        </div>
+                        {{/if}}
+
+</form>
+</fieldset>
+            </div>
+
+                </div>
+{{loadFormValidationMessage}}
+
+
+                </div>
+<!--{{> comments keyField="candidateAddresses"}}-->
+
+</template>

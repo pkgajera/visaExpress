@@ -1,0 +1,497 @@
+<template name="CandDashboard">
+
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td,
+    th {
+      border: 1px solid #FFFFFF;
+      text-align: left;
+      padding: 4px;
+      color: #000000;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #ededed;
+    }
+  </style>
+
+
+
+  <div class="content animate-panel">
+
+    <div class="hpanel">
+      <div class="panel-body">
+        <div class="pull-right">
+          <a class="button downloadZipFile" href="#" download="" target="_blank">Download Docs</a>
+          <!--<input class="button downloadZipFile" type="button" value="Download Zip Doc">-->
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th><input type="checkbox" class="i-checksMaster" name="masterCheckBox" id="masterCheckBox"></th>
+              <th>No.</th>
+              <th>Process Items</th>
+              <th>Consultant</th>
+              <th>Employer</th>
+              <th>Attorney</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#if currentUserRole 'candidate'}} {{#each documentList}}
+            <tr>
+              <td>
+                {{#if this.isDoc}}
+                <input type="checkbox" class="i-checks" name="{{this.key}}" data-count="{{this.docCount}}" id="check"> {{/if}}
+              </td>
+              <td>{{this.index}}</td>
+              <div class="fieldset">
+                <td class="{{this.key}}"><a href="{{pathFor this.routeName}}">{{this.value}} {{this.docCount}}</a></td>
+              </div>
+              <td>{{{this.candidateApproval}}}</td>
+              <td>{{{this.employerApproval}}}</td>
+              <td>{{{this.attorneyApproval}}}</td>
+            </tr>
+            {{/each}} {{else}} {{#if currentUserRole 'employer'}} {{#each documentList}}
+            <tr>
+              <td>
+                {{#if this.isDoc}}
+                <input type="checkbox" class="i-checks" name="{{this.key}}" data-count="{{this.docCount}}" id="check"> {{/if}}
+              </td>
+              <td>{{this.index}}</td>
+              <div class="fieldset">
+                <td class="{{this.key}}"><a href="{{pathFor this.routeName}}">{{this.value}} {{this.docCount}}</a></td>
+              </div>
+              <td>{{{this.candidateApproval}}}</td>
+              <td>
+                <input type="checkbox" id="employerApprove" data-key="{{this.key}}" {{radioIsSelected this.employerApprovalbinary}}/>
+              </td>
+              <td>{{{this.attorneyApproval}}}</td>
+            </tr>
+            {{/each}} {{else}} {{#each documentList}}
+            <tr>
+              <td>
+                {{#if this.isDoc}}
+                <input type="checkbox" class="i-checks" name="{{this.key}}" data-count="{{this.docCount}}" id="check"> {{/if}}
+              </td>
+              <td>{{this.index}}</td>
+              <div class="fieldset">
+                <td class="{{this.key}}"><a href="{{pathFor this.routeName}}">{{this.value}} {{this.docCount}}</a></td>
+              </div>
+              <td>{{{this.candidateApproval}}}</td>
+              <td>{{{this.employerApproval}}}</td>
+              <td>
+                <input type="checkbox" id="attorneyApprove" data-key="{{this.key}}" {{radioIsSelected this.attorneyApprovalbinary}}/>
+              </td>
+            </tr>
+            {{/each}} {{/if}} {{/if}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="content animate-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="hpanel">
+          <div class="panel-heading hbuilt">
+            <div class="panel-tools">
+              <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+            </div>
+            Documents to download
+          </div>
+          <div class="panel-body">
+
+            <table border="1">
+              <thead>
+                <tr>
+                  <th colspan="3">
+                    Document Name
+                  </th>
+                  {{#if currentUserRole 'candidate'}}
+                  <th colspan="2">
+                    Employer Name
+                  </th>
+                  {{/if}} {{#if currentUserRole 'attorney'}}
+                  <th colspan="2">
+                    Employer Name
+                  </th>
+                  {{/if}}
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td colspan="3">
+                    <a class="pdfDownload button proposedJobDetail" href="#" download>I-129</a>
+                    <!-- <a class="" href="/PdfDownload/candidateId" download>pdf download</a> -->
+                  </td>
+                  {{#if currentUserRole 'employer'}} {{else}}
+                  <td colspan="2">
+                    <select class="form-control select2 employerValue" name="role" required>
+                                                          {{#each employeeDDL}}
+                                                            <option value="{{this._id}}">{{this.profile.name}}</option>
+                                                            {{/each}}
+                                                        </select>
+                  </td>
+                  {{/if}}
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content animate-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="hpanel">
+          <div class="panel-heading hbuilt">
+            <div class="panel-tools">
+              <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+            </div>
+            Company
+          </div>
+          <div class="panel-body">
+            {{#if currentUserRole 'candidate'}} {{else}}
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="hpanel">
+                  <div class="panel-heading hbuilt">
+                    <div class="panel-tools">
+                      <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+                    </div>
+                    Proposed Job (for the Candidate)
+                  </div>
+                  <div class="panel-body">
+                    <table>
+                      <thead>
+                        <tr>
+                          <td colspan="2">
+                            <button id="proposedJobDetail" class="button proposedJobDetail" type="button">View Detail</button>
+                          </td>
+                          {{#if currentUserRole 'attorney'}}
+                          <td colspan="3">
+                            <select class="form-control select2 employerProosedValue" name="role" required>
+                                                          {{#each employeeDDL}}
+                                                            <option value="{{this._id}}">{{this.profile.name}}</option>
+                                                            {{/each}}
+                                                        </select>
+                          </td>
+                          {{/if}}
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="hpanel">
+                  <div class="panel-heading hbuilt">
+                    <div class="panel-tools">
+                      <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+                    </div>
+                    Company Docs Upload (for the Candidate)
+                  </div>
+                  <div class="text-center m-b-md">
+                    {{#if currentUserRole 'employer'}}
+                    <input class="your-upload-class employeeUpload" type="file"> {{/if}}
+                  </div>
+                  <div class="panel-body">
+
+                    <table border="1">
+                      <thead>
+                        <tr>
+                          {{#if currentUserRole 'employer'}}
+                          <th colspan="2">
+                            Document Name
+                          </th>
+                          <th colspan="3">
+                            Company Uploaded Docs
+                          </th>
+                          <th colspan="4">
+                            Candidate Uploaded Docs
+                          </th>
+                          {{/if}} {{#if currentUserRole 'attorney'}}
+                          <th colspan="2">
+                            Document Name
+                          </th>
+                          <th colspan="2">
+                            Company Uploaded Docs
+                          </th>
+                          <th colspan="4">
+                            Candidate Uploaded Docs
+                          </th>
+                          {{/if}} {{#if currentUserRole 'candidate'}}
+                          <th colspan="2">
+                            Document Name
+                          </th>
+                          <th colspan="2">
+                            Company Uploaded Docs
+                          </th>
+                          <th colspan="2">
+                            Candidate Uploaded Docs
+                          </th>
+                          <th colspan="2">
+                            Company's Respective Docs Upload
+                          </th>
+                          {{/if}}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each theFilesForEmployerCommon}}
+
+                        <tr>
+                          <td colspan="2">{{this.value}}</td>
+                          {{#if this.employerDoc}}
+                          <td>{{this.employerDoc.original.name}}</td>
+                          <td><a href="{{this.employerDoc.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                          {{#if currentUserRole 'employer'}}
+                          <td><input class="your-upload-class commonDocEmployer employeeUpload" doc-type="{{this.key}}" type="file"></td>
+
+                          {{/if}} {{else}}
+
+                          <td>Employer not upload any document.</td>
+                          <td></td>
+                          {{#if currentUserRole 'employer'}}
+                          <td><input class="your-upload-class commonDocEmployer employeeUpload" doc-type="{{this.key}}" type="file"></td>
+
+                          {{/if}} {{/if}} {{#if this.candidateDocData}}
+                          <td>{{this.candidateDocData.original.name}}</td>
+                          <td><a href="{{this.candidateDocData.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                          {{#if currentUserRole 'candidate'}}
+                          <td><input class="your-upload-class  candidateEmployerUpload" type="file"></td>
+                          <td><input class="button commonDocEmployer candidateUpload" type="button" doc-type="{{this.key}}" value="Upload"></td>
+
+                          {{/if}} {{else}}
+
+                          <td>Candidate not upload any document.</td>
+                          <td></td>
+                          {{#if currentUserRole 'candidate'}}
+                          <td><input class="your-upload-class  candidateEmployerUpload" type="file"></td>
+                          <td><input class="button commonDocEmployer candidateUpload" type="button" doc-type="{{this.key}}" value="Upload"></td>
+
+                          {{/if}} {{/if}}
+                        </tr>
+
+                        {{/each}} {{#each theFilesForEmployer}}
+                        <tr>
+                          <td colspan="2" class="text-center">-</td>
+                          <td>{{this.employerDoc.original.name}}</td>
+                          <td><a href="{{this.employerDoc.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                          {{#if currentUserRole 'employer'}}
+                          <td><button id="deleteFileButtonEmployerDoc">X</button></td>
+                          {{/if}} {{#if this.candidateDocData}}
+                          <td>{{this.candidateDocData.original.name}}</td>
+                          <td><a href="{{this.candidateDocData.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                          {{#if currentUserRole 'candidate'}}
+                          <td><input class="your-upload-class candidateEmployerUpload" type="file"></td>
+                          <td><input class="button candidateUpload" type="button" value="Upload"></td>
+
+                          {{/if}} {{else}}
+
+                          <td>Candidate not upload any document.</td>
+                          <td></td>
+                          {{#if currentUserRole 'candidate'}}
+                          <td><input class="your-upload-class candidateEmployerUpload" type="file"></td>
+                          <td><input class="button candidateUpload" type="button" value="Upload"></td>
+
+                          {{/if}} {{/if}}
+                        </tr>
+                        {{/each}}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="hpanel">
+                  <div class="panel-heading hbuilt">
+                    <div class="panel-tools">
+                      <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+                    </div>
+                    Company Docs Upload (for the Attorney)
+                  </div>
+                  <div class="text-center m-b-md">
+                  </div>
+                  <div class="panel-body">
+
+                    <table border="1">
+                      <thead>
+                        <tr>
+                          <th colspan="2">
+                            Document Name
+                          </th>
+                          <th colspan="4">
+                            Company Uploaded Docs
+                          </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each theFilesForEmployerSpecificCommon}}
+
+                        <tr>
+                          <td colspan="2">{{this.value}}</td>
+                          {{#if this.employerDoc}}
+                          <td>{{this.employerDoc.original.name}}</td>
+                          <td><a href="{{this.employerDoc.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                          {{#if currentUserRole 'employer'}}
+                          <td><input class="your-upload-class commonDocEmployer employeeUpload" doc-type="{{this.key}}" type="file"></td>
+
+                          {{/if}} {{else}}
+
+                          <td>Employer not upload any document.</td>
+                          <td></td>
+                          {{#if currentUserRole 'employer'}}
+                          <td><input class="your-upload-class commonDocEmployer employeeUpload" doc-type="{{this.key}}" type="file"></td>
+
+                          {{/if}} {{/if}}
+
+                        </tr>
+
+                        {{/each}}
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#if currentUserRole 'candidate'}} {{else}}
+  <div class="content animate-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="hpanel">
+          <div class="panel-heading hbuilt">
+            <div class="panel-tools">
+              <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+
+            </div>
+            Attorney Docs Upload
+          </div>
+          <div class="panel-body">
+            <div class="text-center m-b-md">
+              {{#if currentUserRole 'attorney'}}
+              <input class="your-upload-class attorneyUpload" type="file"> {{/if}}
+            </div>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th colspan="2">
+                    Document Name
+                  </th>
+                  <th colspan="2">
+                    Attorney Uploaded Docs
+                  </th>
+                  {{#if currentUserRole 'attorney'}}
+                  <th colspan="3">
+                   Action
+                  </th>
+                  {{/if}}
+                  <!--<th colspan="2">
+                    Candidate Uploaded Docs
+                  </th>-->
+                </tr>
+              </thead>
+              <tbody>
+                {{#each theFilesForAttorneySpecificCommon}}
+
+                <tr>
+                  <td colspan="2">{{this.value}}</td>
+                  {{#if this.attorneyDoc}}
+                  <td>{{this.attorneyDoc.original.name}}</td>
+                  <td><a href="{{this.attorneyDoc.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                  {{#if currentUserRole 'attorney'}}
+                  <td><input class="your-upload-class commonDocAttorney attorneyUpload" doc-type="{{this.key}}" type="file"></td>
+
+                  {{/if}} {{else}}
+
+                  <td>Attorney not upload any document.</td>
+                  <td></td>
+                  {{#if currentUserRole 'attorney'}}
+                  <td><input class="your-upload-class commonDocAttorney attorneyUpload" doc-type="{{this.key}}" type="file"></td>
+
+                  {{/if}} {{/if}}
+
+                </tr>
+                {{#each theFilesForAttorney}}
+                <tr>
+                  <td colspan="2" class="text-center">-</td>
+                  <td>{{this.attorneyDoc.original.name}}</td>
+                  <td><a href="{{this.attorneyDoc.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                  {{#if currentUserRole 'attorney'}}
+                  <td><button id="deleteFileButtonAttorneyDoc">X</button></td>
+                  {{/if}}
+
+                  <!--{{#if this.candidateDocData}}
+                  <td>{{this.candidateDocData.original.name}}</td>
+                  <td><a href="{{this.candidateDocData.url}}" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                  {{#if currentUserRole 'candidate'}}
+                  <td><input class="your-upload-class candidateAttorneyUpload" type="file"></td>
+                  <td><input class="button candidateUpload" type="button" value="Upload"></td>
+                  {{/if}} {{else}}
+                  <td>Candidate not upload any document.</td>
+                  <td></td>
+
+                  {{#if currentUserRole 'candidate'}}
+                  <td><input class="your-upload-class candidateAttorneyUpload" type="file"></td>
+                  <td><input class="button candidateUpload" type="button" value="Upload"></td>
+                  {{/if}}
+                  {{/if}} -->
+                </tr>
+                {{/each}} {{/each}}
+                <tr>
+                  <td colspan="3">I-129</td>
+                  <td><a class="pdfDownload" href="#" target="_blank" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+
+</template>

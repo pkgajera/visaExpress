@@ -1,0 +1,74 @@
+<template name="navbar">
+    <head>
+       <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+       <link rel="stylesheet" type="text/css" href="custom.css">
+    </head>
+      <div class="container" style="width:1000px;">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar"> <span class="glyphicon glyphicon-align-justify set"></span> </button>
+         <a class="navbar-brand" href="{{pathFor 'emphome'}}"><img src="assets/img/logo.png" width="143"  height="42" id="navimg"></a>
+         </div>
+        <div class="navdiv">
+          <nav class="collapse navbar-collapse navset" id="myNavbar" role="navigation">
+          
+           <ul class="nav navbar-nav navbar-right">
+           <li><a href="{{pathFor 'emphome'}}" class="page-scroll">Home</a></li>
+                 <li><a href="{{pathFor 'listUs1'}}" class="page-scroll">Find a Candidate</a></li>
+                      <li><a href="{{pathFor 'postjob'}}" class="page-scroll">Post a job</a></li>
+                     <li><a href="{{pathFor 'contact'}}" class="page-scroll">Contact</a></li>
+                   <li><a href="{{pathFor 'about'}}" class="page-scroll">About</a></li>
+                   
+            
+                               {{#if currentUser}}
+                               
+                        <li class="dropdown">
+                          <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                              
+                                <img class="img-responsive" src="{{currentUser.profile.userImage}}"  alt=""  height="30" width="30"/>
+                           </a>
+                          <ul class="dropdown-menu">
+                               <li>{{currentUser.emails.[0].address}}</li>
+                                <li class="divider"></li>
+
+                            <li><a href="{{pathFor 'exp'}}" id="navlist" >My Dashboard</a></li>
+                            
+                            <li><a href="{{pathFor 'myprofile1'}}" id="navlist">Profile</a></li>
+                               <li><a href="{{pathFor 'postreq'}}"  id="navlist" >Post Requirement</a></li>
+                            
+                            <li class="divider"></li>
+                            <li><a href="{{pathFor 'createcandidate'}}" id="navlist">Create Candidate</a></li>
+                            
+                           <li><a href="{{pathFor 'ChangePassword'}}"  id="navlist" >Change Password</a></li>
+                            
+                           <li class="divider"></li>
+ 
+                           <!-- <li><a href="{{pathFor 'help'}}" id="navlist"  >Help</a></li>-->
+
+                            <li><a href="{{pathFor 'contact'}}" id="navlist">Say Hello</a></li>
+                            
+                            <li class="divider"></li>
+                            
+                            
+                             <center> <li><button class="btn-lg btn-default"><a href="#"><span class="light-blue-text"><b>Logout</b></span></a></button></li></center>
+                          </ul>
+                        </li>                                                                                                               
+                   
+                      {{else}}
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="padding-top:3px;" data-toggle="dropdown"><span class="light-blue-text" ><h4 style="border: 2px solid #12bbf0; padding: 8px 20px; border-radius: 4px">Log In</h4></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{pathFor 'login'}}" style="height:30px; font-size:larger; font-weight:400">As a Job seeker</a></li>
+                            <li><a href="{{pathFor 'emplogin'}}" style="height:30px; font-size:larger; font-weight:400">As a Employer</a></li>
+                           
+                        </ul>
+                    </li>
+                  
+                     {{/if}}
+                </ul>
+           
+          </nav>
+        </div>
+      </div>
+      </template>
+      
+     

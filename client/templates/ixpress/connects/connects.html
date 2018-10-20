@@ -1,0 +1,79 @@
+<template name="connects">
+  <div class="content animate-panel">
+              <!--<h2 class="font-light m-b-xs">
+                      create Connects
+                  </h2>
+              <br/>
+              <br/>
+              <form id="contactform" role="form">
+
+
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <input class="button" type="submit" value="Send Invitation" name="contact-submit">
+                      </div>
+                  </div>
+
+              </form>-->
+
+              <div class="row">
+            
+            <div class="col-md-8 col-md-offset-2">
+                <div class="hpanel email-compose">
+                    <div class="panel-heading hbuilt">
+                        <div class="p-xs h4">
+                           Create Connects
+                        </div>
+                    </div>
+                    <div class="panel-heading hbuilt">
+                        <div class="p-xs">
+
+                            <form class="form-horizontal" id ="connectForm">
+                                  {{#if currentUserRole 'candidate'}}
+                                  {{else}}
+                                <div class="form-group"><label class="col-sm-1 control-label text-left">Connect With:</label>
+                                    <div class="col-sm-11">
+                                         <select class="input_field" name="connectWith">
+                                        {{#each userList}}
+                                            <option value="{{this._id}}">{{this.profile.name}}</option>
+                                        {{/each}}
+                                </select>
+                                    </div>
+                                </div>
+                                {{/if}}
+                                  <div class="form-group"><label class="col-sm-1 control-label text-left">Category:</label>
+                                    <div class="col-sm-11">
+                                        <select class="input_field" name="category">
+                                            {{#each categoryList}}
+                                            <option value="{{this.key}}">{{this.value}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-1 control-label text-left">Subject:</label>
+                                    <div class="col-sm-11"><input type="text" class="form-control input-sm" name="subject" placeholder="Enter subject" required></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-1 control-label text-left">Info:</label>
+                                   <div class="col-sm-11"> <textarea class="form-control input-sm" name="info" placeholder="info"   required></textarea></div>
+                                </div>
+                                  <div class="row">
+                      <div class="col-sm-12 center">
+                          <input class="button" type="submit" value="Send Invitation" name="contact-submit">
+                      </div>
+                  </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <!--<div class="panel-footer">
+                        <button class="btn btn-primary">Save</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+
+          </div>
+  {{loadFormValidationMessage}}
+</template>
